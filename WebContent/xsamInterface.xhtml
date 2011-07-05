@@ -1,0 +1,109 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="layout/template.xhtml">
+                
+     <style>
+        .top{
+            vertical-align:top;
+        }
+        .pbody{
+            padding:0px;
+            height:120px; 
+            width:150px;
+        }
+    </style>
+                       
+<ui:define name="body">
+ <rich:panel>
+    
+    	<h:form>
+    		<h:outputText value="#{url}" />
+    		<h:panelGrid columns="2" columnClasses="top, top">     
+       
+		        <rich:panel id="outerPanel" bodyClass="pbody" rendered = "#{registryBrowser.queryInputBox}">
+		            <f:facet name="header">
+		                <h:outputText value="Enter XSAMS Query to be executed at #{url}"></h:outputText>
+		            </f:facet>
+		            <h:outputText value="Databases exposes the XSAMS data-model. Only standard parts of the database are accessible in this way"></h:outputText>
+		            <br/>   
+		            <h:panelGrid columns="3" columnClasses="top, top">
+		            	<h:outputText value="Atomic (elemental) symbol:" />
+		            	<rich:spacer width="60" height="10"/>
+		            	<h:inputText value="#{xsamsQuery.atomSymbol}" />
+		            	
+		            	<h:outputText value="Molecular Species InChIKey:" />
+		            	<rich:spacer width="60" height="10"/>
+		            	<h:inputText value="#{xsamsQuery.molecularSpeciesInChIKeyValue}" />
+		            	
+		            	<h:outputText value="Molecular Species Stoichiometric Formula:" />
+		            	<rich:spacer width="135" height="10"/>
+		            	<h:inputText value="#{xsamsQuery.molecularSpeciesStoichiometrcFormulaValue}" />
+		            </h:panelGrid>
+		            <h:panelGrid columns="2" columnClasses="top, top">
+			            <h:panelGrid columns="5" columnClasses="top, top">
+			            	<h:outputText value="Atomic number:" />
+			            	<h:outputText value="from" />
+			            	<h:inputText value="#{xsamsQuery.atomNuclearChargeFrom}" />
+			            	<h:outputText value="to" style=" font : bold;"/>
+			            	<h:inputText value="#{xsamsQuery.atomNuclearChargeTo}" style=" width : 103px;"/>
+			            	
+			            	<h:outputText value="Ionization state:" />
+			            	<h:outputText value="from" />
+			            	<h:inputText value="#{xsamsQuery.atomIonChargeFrom}" />
+			            	<h:outputText value="to" style=" font : bold;"/>
+			            	<h:inputText value="#{xsamsQuery.atomIonChargeTo}" style=" width : 103px;"/>
+			            	
+			            	<h:outputText value="Energy of atomic state:" />
+			            	<h:outputText value="from" />
+			            	<h:inputText value="#{xsamsQuery.atomStateEnergyFrom}" />
+			            	<h:outputText value="to" style=" font : bold;"/>
+			            	<h:inputText value="#{xsamsQuery.atomStateEnergyTo}" style=" width : 103px;"/>
+			            	
+			            	<h:outputText value="Wavelength of radiative transition:" />
+			            	<h:outputText value="from" />
+			            	<h:inputText value="#{xsamsQuery.radTransWavelengthExperimentalValueFrom}" />
+			            	<h:outputText value="to" style=" font : bold;"/>
+			            	<h:inputText value="#{xsamsQuery.radTransWavelengthExperimentalValueTo}" style=" width : 103px;"/>
+			            	
+			            	<h:outputText value="Molecular State Energy Value:" />
+			            	<h:outputText value="from" />
+			            	<h:inputText value="#{xsamsQuery.molecularStateEnergyValueFrom}" />
+			            	<h:outputText value="to" style=" font : bold;"/>
+			            	<h:inputText value="#{xsamsQuery.molecularStateEnergyValueTo}" style=" width : 103px;"/>	            	
+			            </h:panelGrid>
+			            <h:panelGrid columns="1" columnClasses="top, top">
+			            	<h:selectManyCheckbox value="#{xsamsQuery.selectedURLFromCheckBox}" layout="pageDirection" rendered="#{xsamsQuery.disableCheckBox}">
+			            		<f:selectItems value="#{registryBrowser.xsamsListForCheckBoxes}"/>
+			            	</h:selectManyCheckbox>
+			            </h:panelGrid>
+		            </h:panelGrid>
+		            <br/>
+		             <h:panelGrid columns="2">
+		             	<h:outputText value="Query Result Format" style=" font : bold;"/>
+		             	<h:selectOneRadio value="#{xsamsQuery.queryResultFormat}">
+							<f:selectItem itemLabel="VOTable" itemValue="votable" />
+							<f:selectItem itemLabel="XSAMS" itemValue="XSAMS" />
+						</h:selectOneRadio>
+		             </h:panelGrid>
+		            <h:commandButton  value="Submit Query" view="/registryViewer.xhtml"
+                             action="#{xsamsQuery.executeQuery()}"> 
+                    </h:commandButton>  
+                    <br/>
+                    <h:outputText value="#{xsamsQuery.submitedQueryStatus}" />
+		        </rich:panel>
+		  
+    		</h:panelGrid>
+    	</h:form>
+
+       	
+    </rich:panel>
+    
+</ui:define> 
+</ui:composition>

@@ -1,0 +1,63 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a="http://richfaces.org/a4j"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+ <rich:panel>
+    
+    	<h:form>
+    		<rich:dataTable width="483" id="carList" rows="50" columnClasses="col"
+            value="#{registryBrowser.capabilityList}" var="categoryB">
+            <f:facet name="header">
+                <rich:columnGroup>
+                	<h:column>
+                        <h:outputText styleClass="headerText" value="Index" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Description" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Standard ID" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Description" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Interface" />
+                    </h:column>
+                </rich:columnGroup>
+            </f:facet>
+
+			<h:column>
+                <h:outputText value="#{categoryB.capabilityLocation}" />
+            </h:column>
+            <h:column>
+                <h:outputText value="#{categoryB.capability.description}" />
+            </h:column>
+            <h:column>
+                <h:outputText value="#{categoryB.capability.standardID}" />
+            </h:column>
+            <h:column>
+                <h:outputText value="#{categoryB.capability.description}" />
+            </h:column>
+            <h:column>
+            	<s:link view="/interfaceViewer.xhtml">
+                	<h:outputText value="View Interface/s" />
+                	<f:param name="indexCap" 
+                        value="#{categoryB.capabilityLocation}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+    </h:form>
+  	
+    </rich:panel>
+    
+</ui:define> 
+</ui:composition>

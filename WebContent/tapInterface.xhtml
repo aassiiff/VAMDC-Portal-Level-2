@@ -1,0 +1,79 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j"
+                template="layout/template.xhtml">
+                
+     <style>
+        .top{
+            vertical-align:top;
+        }
+        .pbody{
+            padding:0px;
+            height:120px; 
+            width:150px;
+        }
+    </style>
+                       
+<ui:define name="body">
+ <rich:panel>
+    
+    	<h:form>
+    		<h:outputText value="#{url}" />
+    		<h:panelGrid columns="2" columnClasses="top, top">     
+       
+		        <rich:panel id="resultA" bodyClass="pbody" rendered = "#{registryBrowser.queryInputBox}">
+		            <f:facet name="header">
+		                <h:outputText value="Enter Query to be executed at #{url}"></h:outputText>
+		            </f:facet>
+		            <h:inputTextarea cols="100" rows="30" value="#{registryBrowser.tapQuery}" id="queryTextArea"/> 
+		            <br/>   
+		            <h:commandButton  value="Submit" view="/queryResult.xhtml"
+                             action="#{registryBrowser.executeQuery}"> 
+                    </h:commandButton>  
+		        </rich:panel>
+		        
+		        <rich:panel id="resultAA" bodyClass="pbody" rendered ="#{not registryBrowser.queryInputBox}">
+		        
+		        	<h:commandButton  value="Submit Another Query" view="/queryResult.xhtml"
+                             action="#{registryBrowser.queryInputBoxToggler}"> 
+                    </h:commandButton> 
+                    
+		            <f:facet name="header">
+		                <h:outputText value="Query Result"></h:outputText>
+		            </f:facet>
+		            <pre>
+        				<h:outputText value="#{registryBrowser.queryResult}" cols="100" rows="40"/>
+        			</pre>
+		           
+		            <br/>   
+		            <h:commandButton  value="Submit Another Query" view="/queryResult.xhtml"
+                             action="#{registryBrowser.queryInputBoxToggler}"> 
+                    </h:commandButton>  
+		        </rich:panel>
+		        
+		       
+		        <rich:panel>
+		         <f:facet name="header">
+		                <h:outputText value="Database Structure"></h:outputText>
+		            </f:facet>
+		        	<rich:tree value="#{registryBrowser.databaseNode}" var="database">
+		    			<rich:treeNode>
+		        			<h:outputText value="#{database}" />
+		    			</rich:treeNode>
+					</rich:tree>
+		        </rich:panel>
+        
+    		</h:panelGrid>
+    	</h:form>
+
+       	
+    </rich:panel>
+    
+</ui:define> 
+</ui:composition>

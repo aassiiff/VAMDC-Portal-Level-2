@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<packages version="1.3">
+   <package name="vamdc-portal-level2.war" type="org.jboss.ide.eclipse.as.core.packages.warPackage" todir="/vamdc-portal-level2" exploded="false" inWorkspace="true">
+      <fileset dir="/vamdc-portal-level2/WebContent" includes="**/*" excludes="**/WEB-INF/lib/*.jar" inWorkspace="true" flatten="false">
+         <properties></properties>
+      </fileset>
+      <folder name="WEB-INF">
+         <folder name="lib">
+            <fileset dir="/vamdc-portal-level2/WebContent/WEB-INF/lib" includes="*.jar" inWorkspace="true" flatten="false">
+               <properties></properties>
+            </fileset>
+            <properties></properties>
+         </folder>
+         <folder name="classes">
+            <fileset dir="/vamdc-portal-level2/build/classes" includes="**/*" inWorkspace="true" flatten="false">
+               <properties></properties>
+            </fileset>
+            <properties></properties>
+         </folder>
+         <properties></properties>
+      </folder>
+      <properties>
+         <property name="org.jboss.ide.eclipse.as.core.packages.ModuleIDPropertyKey" value="1304347730246"></property>
+      </properties>
+   </package>
+   <properties></properties>
+</packages>

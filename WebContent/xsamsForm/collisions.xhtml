@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	<style>
+		.top {
+			vertical-align: top;
+		}
+		
+		.pbody {
+			padding: 0px;
+			height: 120px;
+			width: 150px;
+		}
+	</style>
+
+	<h:panelGrid columns="2">
+		<h:panelGrid columns="1">
+			<rich:spacer width="100" />
+		</h:panelGrid>
+		
+		<rich:panel style="background-color:#E9F1FF">
+			<f:facet name="header">
+				<h:outputText>Collisions
+				<rich:spacer width="280" />
+				<a4j:commandLink reRender="formPanel3, formButtonsPanel" action="#{navigator.clearCollisionsForm()}" 
+					rendered="#{!navigator.stage1Display}">				
+	                <h:outputText value="X Close" /> 
+	            </a4j:commandLink></h:outputText>
+				
+			</f:facet>
+
+			<h:panelGrid columns="2" columnClasses="top, top">
+				<h:panelGrid columns="3" columnClasses="top, top">
+					<h:outputText value="CollisionIAEACode:" />
+					<rich:spacer width="60" height="10" />
+					<h:inputText value="#{collisions.collisionIAEACode}" style=" width : 181px;"/>
+
+					<h:outputText value="CollisionCode:" />
+					<rich:spacer width="20" height="10" />
+					<h:inputText value="#{collisions.collisionCode}" style=" width : 181px;"/>
+
+					<h:outputText value="Reactants:" />
+					<rich:spacer width="20" height="10" />
+					<h:selectBooleanCheckbox value="#{collisions.reactants}"/>
+
+					<h:outputText value="Products:" />
+					<rich:spacer width="20" height="10" />
+					<h:selectBooleanCheckbox
+						value="#{collisions.products}"/>
+				</h:panelGrid>
+			</h:panelGrid>
+
+		</rich:panel>
+	</h:panelGrid>
+</ui:composition>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	<style>
+
+	</style>
+
+	<h:panelGrid columns="2" style="vertical-align:top; valign: top;">
+		<h:panelGrid columns="1">
+			<rich:spacer width="100" />
+		</h:panelGrid>
+		<rich:panel style="background-color:#E9F1FF" >
+			<f:facet name="header">
+				<h:outputText>Atoms
+				<rich:spacer width="293" />
+				<a4j:commandLink reRender="formPanel1, formButtonsPanel" action="#{navigator.clearAtomsForm()}" rendered="#{!navigator.stage1Display}">				
+	                <h:outputText value="X Close" /> 
+	            </a4j:commandLink></h:outputText>
+			</f:facet>
+			<h:panelGrid columns="1" >
+				<h:panelGrid columns="3" >
+					<h:outputText value="Atomic (elemental) symbol:" />
+					<rich:spacer width="23" />
+					<h:inputText value="#{speciesAtoms.atomSymbol}"
+						style=" width : 180px;">
+					</h:inputText>
+					
+					<h:outputText value="Atom Inchi:" />
+					<rich:spacer width="0" />
+					<h:inputText value="#{speciesAtoms.atomInchi}"
+						style=" width : 180px;">
+					</h:inputText>
+					
+					<h:outputText value="Atom Inchi Key:" />
+					<rich:spacer width="0" />
+					<h:inputText value="#{speciesAtoms.atomInchiKey}"
+						style=" width : 180px;">
+					</h:inputText>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="6">
+					<h:outputText value="Atom Mass Number:" />
+					<rich:spacer width="10" height="10" />
+					<h:outputText value="Range" />
+					<h:inputText value="#{speciesAtoms.atomMassNumberFrom}"
+						style=" width : 85px;">
+					</h:inputText>
+					<h:outputText value=" " style=" font : bold;" />
+					<h:inputText value="#{speciesAtoms.atomMassNumberTo}"
+						style=" width : 85px;">
+					</h:inputText>
+
+					<h:outputText value="Atom Ion Charge:"></h:outputText>
+					<rich:spacer width="10" height="10" />
+					<h:outputText value="Range">
+					</h:outputText>
+					<h:inputText value="#{speciesAtoms.atomIonChargeFrom}"
+						style=" width : 85px;">
+						<a4j:support event="onkeyup" />
+					</h:inputText>
+					<h:outputText value=" " style=" font : bold;" />
+					<h:inputText value="#{speciesAtoms.atomIonChargeTo}"
+						style=" width : 85px;">
+					</h:inputText>
+					
+					<h:outputText value="Atom Nuclear Charge:"></h:outputText>
+					<rich:spacer width="10" height="10" />
+					<h:outputText value="Range">
+					</h:outputText>
+					<h:inputText value="#{speciesAtoms.atomNuclearChargeFrom}"
+						style=" width : 85px;">
+						<a4j:support event="onkeyup" />
+					</h:inputText>
+					<h:outputText value=" " style=" font : bold;" />
+					<h:inputText value="#{speciesAtoms.atomNuclearChargeTo}"
+						style=" width : 85px;">
+					</h:inputText>
+				</h:panelGrid>
+			</h:panelGrid>		 
+		</rich:panel>
+	</h:panelGrid>
+</ui:composition>

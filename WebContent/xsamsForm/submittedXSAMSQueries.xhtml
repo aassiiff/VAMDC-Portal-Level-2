@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+
+	<rich:dataTable width="483" id="carList" rows="50" columnClasses="col"
+		value="#{xsamsQueryNew.submittedXSAMSQueryListTemp}" var="categoryB">
+		<f:facet name="header">
+			<rich:columnGroup>
+				<h:column>
+					<h:outputText styleClass="headerText" value="Node" />
+				</h:column>
+				<h:column>
+					<h:outputText styleClass="headerText" value="Query URL" />
+				</h:column>
+				<!--  
+                    <rich:column> 
+                        <h:outputText styleClass="headerText" value="Resource" />
+                    </rich:column>
+                    -->
+				<h:column>
+					<h:outputText styleClass="headerText" value="Status" />
+				</h:column>
+
+				<!--  
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Download" />
+                    </h:column>
+                    
+                     <h:column>
+                        <h:outputText styleClass="headerText" value="Download URL" />
+                    </h:column>
+                    -->
+			</rich:columnGroup>
+		</f:facet>
+
+		<h:column>
+			<h:outputText value="#{categoryB.extendedRegistry.resource.title}" />
+		</h:column>
+
+		<h:column>
+			<h:outputText
+				value="#{categoryB.resoourceURL}#{categoryB.encodedQuery}" />
+		</h:column>
+		<!--  
+            <h:column>
+                <h:outputText value="#{categoryB.resource.title}" />
+            </h:column>
+            -->
+		<h:column>
+			<h:outputText value="Submitted" />
+		</h:column>
+
+	</rich:dataTable>
+	<h:panelGrid columns="6" id="stage2ButtonPanel">
+		<a4j:commandButton value="OK" action="#{navigator.cancelQueryBuilder()}"
+			reRender="mainOptionPanel, formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, rightPanel, formButtonsPanel" />
+	</h:panelGrid>
+
+</ui:composition>

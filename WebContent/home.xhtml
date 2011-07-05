@@ -1,0 +1,38 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:jstl="http://java.sun.com/jsp/jstl/core"
+                template="layout/template.xhtml">
+
+	<ui:define name="body">
+		<p>
+			The registry is a database and web service holding metadata that describe the VAMDC resources. 
+			By holding these metadata in a central point, we avoid the need to hard-code and maintain them in 
+			multiple applications, thereby making the VAMDC facilities easier to sustain. 
+		</p>
+		<p>
+			The registry database and web-service were deployed at MSSL using AstroGrid software in its standard form. 
+			Resources have been registered as they become available. The legacy web-sites for VAMDC 
+			partners that predate VAMDC are also registered. The generic TAP services are all registered, including 
+			machine-readable details of their database schemata.
+		</p>
+		<p>
+			VAMDC needs a portal for web access as well as a desktop 
+			client. Probably the hardest part of the design of a such a portal is the interaction with the VAMDC 
+			registry, details of that interaction are encapsulated in a software library.
+
+			Welcome to a prototype web-portal. In the latest version, the portal hides details of the registry interaction, 
+			and can also be used as a tool for developers making subsequent portals. The code from this 
+			engineering portal can be packaged to form the registry-client library for use in other web applications. 
+			
+		</p>
+		<!--  
+		<s:link value="Browse the Registry" view="/registryViewer.xhtml" />   
+		-->
+	</ui:define> 
+</ui:composition>

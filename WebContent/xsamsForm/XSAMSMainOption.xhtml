@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j">
+
+	<style>
+        
+        
+        .panelClass {
+		    top: 190px;
+		    position: fixed;		
+		    valign: top;
+		}  
+    </style>
+    
+	<h:panelGrid styleClass="panelClass">
+        <rich:panel>
+            <f:facet name="header">
+                <h:outputText value="Restrictables"/>
+            </f:facet>
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Atoms"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">                
+	                <rich:menuItem value="Atoms" reRender="formPanel1, formPanel4, mainOptionPanel, formButtonsPanel" 
+	                action="#{navigator.subOptionSpeciesAtoms}" rendered="#{!navigator.stage1Display}"/>
+	            </rich:dropDownMenu>
+            </a4j:form>
+            
+            <rich:spacer height="10"/>
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Molecules"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">                
+	                <rich:menuItem value="Molecules" reRender="formPanel1A, formPanel4, mainOptionPanel, formButtonsPanel" 
+	                action="#{navigator.subOptionSpeciesMolecules}" rendered="#{!navigator.stage1Display}"/>
+	            </rich:dropDownMenu>
+            </a4j:form>
+            
+            <rich:spacer height="10"/>
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Transitions"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">
+	                <rich:menuItem value="Transitions" reRender="formPanel2, formPanel4, formButtonsPanel" 
+	                action="#{navigator.subOptionTransitions}" rendered="#{!navigator.stage1Display}"/>
+	            </rich:dropDownMenu>
+            </a4j:form>
+            
+            <rich:spacer height="10"/>
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Collisions"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">                
+	                <rich:menuItem value="Collisions" reRender="formPanel3, formPanel4, mainOptionPanel, formButtonsPanel" 
+	               	action="#{navigator.subOptionCollisions}" rendered="#{!navigator.stage1Display}"/> 
+	            </rich:dropDownMenu>
+            </a4j:form>
+            
+            <rich:spacer height="10"/> 
+            
+            <a4j:form ajaxSubmit="true">
+	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Free Form"
+	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">
+	                <rich:menuItem value="Free Form" reRender="formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, mainOptionPanel, formButtonsPanel" 
+	                	action="#{navigator.subOptionFreeForm}" rendered="#{!navigator.stage1Display}"/>              
+	            </rich:dropDownMenu>
+            </a4j:form>
+                     
+        </rich:panel>
+       
+    </h:panelGrid> 
+    <rich:spacer height="00"/>               
+
+</ui:composition>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" template="layout/template.xhtml">
+	<style>
+
+
+.top{vertical-align:top;}
+
+.colStyle1 { width: 160px;
+background: red;
+}
+.colStyle2 { width: 35%;
+background: green;
+}
+.colStyle3 { width: 55%;
+background: blue;
+}
+
+</style>
+
+	<ui:define name="body">
+		<rich:panel>
+
+			<h:panelGrid id="xsamsFormPanel" columns="3" style="vertical-align:top;" columnClasses="top">
+				
+				<h:panelGrid id="mainOptionPanel">
+					<a4j:include id="mainOptionBody"
+						viewId="#{navigator.mainOptionPanel}" />
+				</h:panelGrid>
+				
+				
+				<a4j:form ajaxSubmit="true">
+					<h:panelGrid id="formPanel" styleClass="formPanel" style="vertical-align:top;" columnClasses="top">
+
+						<h:panelGrid id="formPanel1">
+							<a4j:include id="formBody1" viewId="#{navigator.formPanel1}" />
+						</h:panelGrid>
+						<h:panelGrid id="formPanel1A">
+							<a4j:include id="formBody1A" viewId="#{navigator.formPanel1A}" />
+						</h:panelGrid>
+						<h:panelGrid id="formPanel2">
+							<a4j:include id="formBody2" viewId="#{navigator.formPanel2}" />
+						</h:panelGrid>
+						<h:panelGrid id="formPanel3">
+							<a4j:include id="formBody3" viewId="#{navigator.formPanel3}" />
+						</h:panelGrid>
+						<h:panelGrid id="formPanel4">
+							<a4j:include id="formBody4" viewId="#{navigator.formPanel4}" />
+						</h:panelGrid>
+						<h:panelGrid id="formButtonsPanel">
+							<a4j:include id="formButtons"
+								viewId="#{navigator.formButtonsPanel}" />
+						</h:panelGrid>
+
+					</h:panelGrid>
+				</a4j:form>
+				
+				<a4j:form ajaxSubmit="true">
+					<h:panelGrid id="rightPanel">
+						<a4j:include viewId="#{navigator.rightPanel}" />
+					</h:panelGrid>
+				</a4j:form>
+			
+			</h:panelGrid>
+		</rich:panel>
+	</ui:define>
+</ui:composition>

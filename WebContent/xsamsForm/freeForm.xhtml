@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	<style>
+.top {
+	vertical-align: top;
+}
+
+.pbody {
+	padding: 0px;
+	height: 120px;
+	width: 150px;
+}
+</style>
+	<h:panelGrid columns="2">
+		<h:panelGrid columns="1">
+			<rich:spacer width="100" />
+		</h:panelGrid>
+
+		<rich:panel style="background-color:#EDFFE6">
+			<f:facet name="header">
+				<h:outputText value="Free Form"></h:outputText>
+			</f:facet>
+
+			<h:panelGrid columns="1" columnClasses="top, top">
+				<h:panelGrid columns="1" columnClasses="top, top">
+					<h:inputTextarea cols="55" rows="10"
+						value="#{freeForm.queryString}" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="6">
+					<rich:spacer width="38" />
+					<a4j:commandButton value="Clear" action="#{navigator.clearForm()}"
+						reRender="mainOptionPanel, formPanel1, formPanel2, formPanel3, formButtonsPanel" />
+					<rich:spacer width="38" />
+					<a4j:commandButton value="Cancel"
+						action="#{navigator.resetQueryBuilder()}"
+						reRender="mainOptionPanel, formPanel1, formPanel2, formPanel3, formButtonsPanel" />
+					<rich:spacer width="38" />
+					<a4j:commandButton value="Submit"
+						action="#{navigator.executeQueryStage1FreeForm()}"
+						reRender="mainOptionPanel, formPanel1, formPanel2, formPanel3, formButtonsPanel"></a4j:commandButton>
+				</h:panelGrid>
+			</h:panelGrid>
+
+		</rich:panel>
+	</h:panelGrid>
+</ui:composition>
