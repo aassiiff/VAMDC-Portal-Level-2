@@ -20,7 +20,7 @@
 </style>
 	<h:panelGrid columns="2">
 		<h:panelGrid columns="1">
-			<rich:spacer width="100" />
+			<rich:spacer width="100"/>
 		</h:panelGrid>
 		<rich:panel style="background-color:#E9F1FF">
 			<f:facet name="header">
@@ -40,11 +40,11 @@
 					<rich:spacer width="5" height="10" />
 					<h:outputText value="Range" />
 					<h:inputText value="#{transitions.radTransWavelengthFrom}"
-						style=" width : 52px;" />
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
 					<h:outputText value="" style=" font : bold;" />
 					<h:inputText value="#{transitions.radTransWavelengthTo}"
-						style=" width : 52px;" />
-					<h:selectOneMenu >
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
+					<h:selectOneMenu disabled="#{not transitions.editable}">
 						<f:selectItem itemValue="Å"
 							itemLabel="Å" />
 						<f:selectItem itemValue="nm"
@@ -61,11 +61,11 @@
 					<rich:spacer  />
 					<h:outputText value="Range" />
 					<h:inputText value="#{transitions.radTransFrequencyFrom}"
-						style=" width : 52px;" />
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
 					<h:outputText value="" style=" font : bold;" />
 					<h:inputText value="#{transitions.radTransFrequencyTo}"
-						style=" width : 52px;" />
-					<h:selectOneMenu >
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
+					<h:selectOneMenu disabled="#{not transitions.editable}">
 						<f:selectItem itemValue="Hz"
 							itemLabel="Hz" />
 						<f:selectItem itemValue="kHz"
@@ -82,11 +82,11 @@
 					<rich:spacer />
 					<h:outputText value="Range" />
 					<h:inputText value="#{transitions.radTransEnergyFrom}"
-						style=" width : 52px;" />
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
 					<h:outputText value="" style=" font : bold;" />
 					<h:inputText value="#{transitions.radTransEnergyTo}"
-						style=" width : 52px;" />
-					<h:selectOneMenu >
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
+					<h:selectOneMenu disabled="#{not transitions.editable}">
 						<f:selectItem itemValue="eV"
 							itemLabel="eV" />
 						<f:selectItem itemValue="J"
@@ -99,11 +99,11 @@
 					<rich:spacer />
 					<h:outputText value="Range" />
 					<h:inputText value="#{transitions.radTransWavenumberFrom}"
-						style=" width : 52px;" />
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
 					<h:outputText value="" style=" font : bold;" />
 					<h:inputText value="#{transitions.radTransWavenumberTo}"
-						style=" width : 52px;" />
-					<h:selectOneMenu >
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
+					<h:selectOneMenu disabled="#{not transitions.editable}">
 						<f:selectItem itemValue="1/cm"
 							itemLabel="1/cm" />
 						<f:selectItem itemValue="1/m"
@@ -114,7 +114,7 @@
 					<rich:spacer />
 					<h:outputText value="Range" />
 					<h:inputText value="#{transitions.atomStateEnergyFrom}"
-						style=" width : 52px;" />
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
 					<h:outputText value="" />
 					<h:inputText value="#{transitions.atomStateEnergyTo}"
 						style=" width : 52px;" />
@@ -150,11 +150,11 @@
 					</h:outputText>
 					<h:inputText
 						value="#{transitions.radTransProbabilityAFrom}"
-						style=" width : 52px;" />
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
 					<h:outputText value="" />
 					<h:inputText
 						value="#{transitions.radTransProbabilityATo}"
-						style=" width : 52px;" />
+						style=" width : 52px;" disabled="#{not transitions.editable}"/>
 					<h:outputText value="1/s" />
 					</h:panelGrid>
 					
@@ -163,28 +163,28 @@
 					<rich:spacer />
 					<rich:spacer width="51"/>
 					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningDoppler}"/>
+						value="#{transitions.radTransBroadeningDoppler}" disabled="#{not transitions.editable}"/>
 					
 					
 					<h:outputText value="RadTransBroadeningInstrument:" />
 					<rich:spacer />
 					<rich:spacer />
 					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningInstrument}"/>
+						value="#{transitions.radTransBroadeningInstrument}" disabled="#{not transitions.editable}"/>
 					
 						
 					<h:outputText value="RadTransBroadeningNatural:" />
 					<rich:spacer />
 					<rich:spacer />
 					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningNatural}"/>
+						value="#{transitions.radTransBroadeningNatural}" disabled="#{not transitions.editable}"/>
 					
 						
 					<h:outputText value="RadTransBroadeningPressure:" />
 					<rich:spacer />
 					<rich:spacer />
 					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningPressure}"/>
+						value="#{transitions.radTransBroadeningPressure}" disabled="#{not transitions.editable}"/>
 					
 				</h:panelGrid>
 				

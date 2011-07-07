@@ -9,9 +9,7 @@
 	xmlns:jstl="http://java.sun.com/jsp/jstl/core"
 	xmlns:a4j="http://richfaces.org/a4j" >
 
-		<style>
-        
-        
+		<style>     
         .panelClass {
 		    top: 190px;
 		    position: fixed;		
@@ -29,7 +27,7 @@ function popupPDFWindow(){
 </script>
 
 
-		<rich:modalPanel id="panel" width="350" height="200">
+		<rich:modalPanel id="panel" width="350" autosized="true">
 			<f:facet name="header">
 				<h:panelGroup>
 					<h:outputText value="Resource Information"></h:outputText>
@@ -113,12 +111,12 @@ function popupPDFWindow(){
 						<h:outputText value="#{categoryA.resource.title}" />
 					</a4j:commandLink>
 				</h:column>
-				
+				<!--  
 				<h:column >
 							<h:outputText value="#{categoryA.getsetRestrictableListAsString()}"></h:outputText>
 				</h:column>
-
-	<!-- 
+-->
+	<!--  -->
 				<h:column>
 					<h:dataTable id="dt2" value="#{categoryA.restrictableList}"
 						var="restrictable">
@@ -127,7 +125,7 @@ function popupPDFWindow(){
 						</h:column>
 					</h:dataTable>
 				</h:column>
-				 -->
+				
 			</rich:dataTable>
 		</h:form>
 

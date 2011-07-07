@@ -38,20 +38,20 @@
 				<h:panelGrid columns="3" columnClasses="top, top">
 					<h:outputText value="CollisionIAEACode:" />
 					<rich:spacer width="60" height="10" />
-					<h:inputText value="#{collisions.collisionIAEACode}" style=" width : 181px;"/>
+					<h:inputText value="#{collisions.collisionIAEACode}" style=" width : 181px;" disabled="#{not collisions.editable}"/>
 
 					<h:outputText value="CollisionCode:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{collisions.collisionCode}" style=" width : 181px;"/>
+					<h:inputText value="#{collisions.collisionCode}" style=" width : 181px;" disabled="#{not collisions.editable}"/>
 
 					<h:outputText value="Reactants:" />
 					<rich:spacer width="20" height="10" />
-					<h:selectBooleanCheckbox value="#{collisions.reactants}"/>
+					<h:selectBooleanCheckbox value="#{collisions.reactants}" disabled="#{not collisions.editable}"/>
 
 					<h:outputText value="Products:" />
 					<rich:spacer width="20" height="10" />
 					<h:selectBooleanCheckbox
-						value="#{collisions.products}"/>
+						value="#{collisions.products}" disabled="#{not collisions.editable}"/>
 				</h:panelGrid>
 			</h:panelGrid>
 

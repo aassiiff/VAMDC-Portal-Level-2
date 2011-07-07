@@ -24,7 +24,7 @@ public class Navigator {
 	private String subOptionPanel = "/xsamsForm/empty.xhtml";
 	
 	// Number of Form Panels are equal to Number of Main Options
-	private String formPanel1 = "/xsamsForm/emptyWithWidthHeight.xhtml";
+	private String formPanel1 = "/xsamsForm/emptyWithWidth.xhtml";
 	private String formPanel1A = "/xsamsForm/emptyWithWidth.xhtml";
 	private String formPanel2 = "/xsamsForm/emptyWithWidth.xhtml";
 	private String formPanel3 = "/xsamsForm/emptyWithWidth.xhtml";
@@ -40,20 +40,6 @@ public class Navigator {
 	private boolean stage1Display = false;
 	private boolean stage2Display = false;
 	
-	//private String 
-	
-	/*
-	
-	private boolean subOption11Disabled = false; 
-	private boolean subOption21Disabled = false;
-	private boolean subOption31Disabled = false;
-	private boolean subOption12Disabled = false;
-	private boolean subOption22Disabled = false;
-	private boolean subOption32Disabled = false;
-	private boolean subOption13Disabled = true;
-	private boolean subOption23Disabled = false;
-	private boolean subOption33Disabled = false;
-	*/
 	private List<String> selectedNodes;
 
 
@@ -266,13 +252,14 @@ public class Navigator {
 
 	public void executeQueryStage1(){
 		xsamsQueryNew.executeQueryStage1();
+		xsamsQueryNew.toggleEditable();
 		this.stage1Display = true;
 		mainOptionPanel = "/xsamsForm/XSAMSMainOption.xhtml";
 		//formPanel1 = "/xsamsForm/xsamsQueryResponseStage1.xhtml";
 		//formPanel1A = "/xsamsForm/empty.xhtml";
 		//formPanel2 = "/xsamsForm/empty.xhtml";
 		//formPanel3 = "/xsamsForm/empty.xhtml";
-		formButtonsPanel = "/xsamsForm/emptyWithWidth.xhtml";	
+		formButtonsPanel = "/xsamsForm/refineButton.xhtml";	
 		rightPanel = "/xsamsForm/xsamsQueryResponseStage1.xhtml";
 	}
 	
@@ -331,7 +318,24 @@ public class Navigator {
 	}
 	
 	public void resetQueryBuilder(){
-		System.out.println("resetQueryBuilder called");
+		System.out.println("enableQueryBuilder called");
+		//xsamsQueryNew.toggleEditable();
+		this.stage1Display = false;
+		//xsamsQueryNew.setSpeciesForm("---");
+		//xsamsQueryNew.setWavelenthForm("---");
+		mainOptionPanel = "/xsamsForm/XSAMSMainOption.xhtml";		
+		//formPanel1 = "/xsamsForm/empty.xhtml";
+		//formPanel1A = "/xsamsForm/empty.xhtml";
+		//formPanel2 = "/xsamsForm/empty.xhtml";
+		//formPanel3 = "/xsamsForm/empty.xhtml";
+		//formPanel4 = "/xsamsForm/empty.xhtml";
+		//this.rightPanel = "/xsamsForm/emptyWithWidthHeight.xhtml";
+		formButtonsPanel = "/xsamsForm/xsamsFormButtons.xhtml";
+	}
+	
+	public void enableQueryBuilder(){
+		System.out.println("enableQueryBuilder called");
+		xsamsQueryNew.toggleEditable();
 		this.stage1Display = false;
 		//xsamsQueryNew.setSpeciesForm("---");
 		//xsamsQueryNew.setWavelenthForm("---");

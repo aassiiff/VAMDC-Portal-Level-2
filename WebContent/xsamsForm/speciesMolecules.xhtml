@@ -20,7 +20,7 @@
 
 	<h:panelGrid columns="2">
 		<h:panelGrid columns="1">
-			<rich:spacer width="100" />
+			<rich:spacer width="100"/>
 		</h:panelGrid>
 		<rich:panel style="background-color:#E9F1FF">
 			<f:facet name="header">
@@ -36,20 +36,20 @@
 				<h:panelGrid columns="3" columnClasses="top, top">
 					<h:outputText value="Molecules Chemical Name:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{speciesMolecules.moleculeChemicalName}" style=" width : 181px;"/>
+					<h:inputText value="#{speciesMolecules.moleculeChemicalName}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}"/>
 
 					<h:outputText value="Molecule InChI Name:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{speciesMolecules.moleculeInchi}" style=" width : 181px;"/>
+					<h:inputText value="#{speciesMolecules.moleculeInchi}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}"/>
 
 					<h:outputText value="Molecule InChI Key:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{speciesMolecules.moleculeInchiKey}" style=" width : 181px;"/>
+					<h:inputText value="#{speciesMolecules.moleculeInchiKey}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}"/>
 
 					<h:outputText value="Stoichiometric Formula:" />
 					<rich:spacer width="20" height="10" />
 					<h:inputText
-						value="#{speciesMolecules.moleculeOrdinaryStructuralFormula}" style=" width : 181px;"/>
+						value="#{speciesMolecules.moleculeOrdinaryStructuralFormula}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}"/>
 				</h:panelGrid>
 			</h:panelGrid>
 

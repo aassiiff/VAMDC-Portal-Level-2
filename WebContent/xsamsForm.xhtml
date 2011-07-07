@@ -23,11 +23,11 @@
 	</style>
 
 	<ui:define name="body">
-		<rich:panel style="padding-left:-100px">
+		<rich:panel style="padding-left:0px">
 <!-- 
 			<h:panelGrid id="xsamsFormPanel" columns="3" style="vertical-align:top;" columnClasses="top">
- -->		<table style="vertical-align:top">
- 			<tr style="vertical-align:top">
+ -->		<table>
+ 			<tr>
  				<td>
 				<h:panelGrid id="mainOptionPanel">
 					<a4j:include id="mainOptionBody"
@@ -35,9 +35,9 @@
 				</h:panelGrid>
 				</td>
 				
-				<td style="vertical-align:top">
+				<td style="vertical-align:top; horizontal-align:left">
 				<a4j:form ajaxSubmit="true">
-					<h:panelGrid id="formPanel" styleClass="formPanel" style="vertical-align:top;" columnClasses="top">
+					<h:panelGrid id="formPanel">
 
 						<h:panelGrid id="formPanel1">
 							<a4j:include id="formBody1" viewId="#{navigator.formPanel1}" />

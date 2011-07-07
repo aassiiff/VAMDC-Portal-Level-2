@@ -387,5 +387,12 @@ public class XSAMSQueryGeneratorNew {
 		//wavelengthWaveNumber.clearFields();
 		freeForm.setQueryString("SELECT ALL WHERE ");
 	}
+	
+	public void toggleEditable(){
+		speciesAtoms.toggleEditable();
+		speciesMolecules.toggleEditable();
+		transitions.toggleEditable();
+		collisions.toggleEditable();
+	}
 
 }

@@ -55,10 +55,7 @@ public class RegistryBrowser {
 
 	@Logger
 	private Log log;
-
-	@In
-	FacesMessages facesMessages;
-
+	
 	private int resourceIndex = 0;
 
 	private String fileServerURL;
@@ -257,46 +254,6 @@ public class RegistryBrowser {
 
 							extendedRegistryList.add(extendedRegistry);
 						}
-						
-						/*
-						XmlObject tempObject = resourceTemp.copy();
-						XmlObject xmlObjectApplicationChild[] = tempObject
-								.selectChildren(new QName("",
-										"applicationDefinition"));
-						
-						System.out.println("Application Definitition: "
-								+ xmlObjectApplicationChild.length);
-
-						XmlObject xmlObjectTableChild[] = tempObject
-								.selectChildren(new QName("", "table"));
-
-						// System.out.println("Table: " +
-						// xmlObjectTableChild.length);
-						for (int x = 0; x < xmlObjectTableChild.length; x++) {
-
-							XmlObject xmlObjectTableName[] = xmlObjectTableChild[x]
-									.selectChildren(new QName("", "name"));
-
-							// tableList.add(xmlObjectTableChild[x]);
-
-							String tableXML = xmlObjectTableName[0].xmlText();
-							int indexGreaterThan = tableXML.indexOf(">") + 1;
-							int indexSecondLessThan = tableXML.indexOf("</");
-							@SuppressWarnings("unused")
-							String tableName = tableXML.substring(
-									indexGreaterThan, indexSecondLessThan);
-
-							// tableNamesList.add(tableName);
-
-							@SuppressWarnings("unused")
-							XmlObject xmlObjectColumnChild[] = xmlObjectTableChild[x]
-									.selectChildren(new QName("", "column"));
-							
-							 * System.out.println(tableName + "   Column: " +
-							 * xmlObjectColumnChild.length);
-							 
-						}*/
-
 					}
 				}
 			}
@@ -304,7 +261,6 @@ public class RegistryBrowser {
 		} catch (XmlException ex) {
 
 		}
-
 	}
 	
 	private List<String> getRestrictableList(Resource resourceValue){
@@ -462,77 +418,7 @@ public class RegistryBrowser {
 		}
 
 	}
-/*
-	@SuppressWarnings("rawtypes")
-	private void buildTableNameList() {
-		databaseNode = new TreeNodeImpl();
-
-		TreeNodeImpl tableNode;
-
-		tableList = new ArrayList<XmlObject>();
-		columnList = new ArrayList<XmlObject>();
-
-		tableNamesList = new ArrayList<String>();
-
-		ExtendedRegistry tempExtendedRegistry = this.extendedRegistryList
-				.get(resourceIndex);
-		Resource tempResource = tempExtendedRegistry.getResource();
-		XmlObject tempObject = tempResource.copy();
-
-		XmlObject xmlObjectTableChild[] = tempObject.selectChildren(new QName(
-				"", "table"));
-
-		// System.out.println("Table: " + xmlObjectTableChild.length);
-		for (int tableIndex = 0; tableIndex < xmlObjectTableChild.length; tableIndex++) {
-			tableNode = new TreeNodeImpl();
-			XmlObject xmlObjectTableName[] = xmlObjectTableChild[tableIndex]
-					.selectChildren(new QName("", "name"));
-
-			tableList.add(xmlObjectTableChild[tableIndex]);
-
-			String tableXML = xmlObjectTableName[0].xmlText();
-			int indexGreaterThan = tableXML.indexOf(">") + 1;
-			int indexSecondLessThan = tableXML.indexOf("</");
-			String tableName = tableXML.substring(indexGreaterThan,
-					indexSecondLessThan);
-
-			XmlObject xmlObjectColumnChild[] = xmlObjectTableChild[tableIndex]
-					.selectChildren(new QName("", "column"));
-			for (int columnIndex = 0; columnIndex < xmlObjectColumnChild.length; columnIndex++) {
-
-				XmlObject xmlObjectColumnName[] = xmlObjectColumnChild[columnIndex]
-						.selectChildren(new QName("", "name"));
-
-				XmlObject xmlObjectColumnType[] = xmlObjectColumnChild[columnIndex]
-						.selectChildren(new QName("", "dataType"));
-				columnList.add(xmlObjectColumnChild[columnIndex]);
-
-				String columnXML = xmlObjectColumnName[0].xmlText();
-				indexGreaterThan = columnXML.indexOf(">") + 1;
-				indexSecondLessThan = columnXML.indexOf("</");
-				String columnName = columnXML.substring(indexGreaterThan,
-						indexSecondLessThan);
-				if (xmlObjectColumnType.length > 0) {
-					String columnTypeXML = xmlObjectColumnType[0].xmlText();
-					indexGreaterThan = columnTypeXML.indexOf(">") + 1;
-					indexSecondLessThan = columnTypeXML.indexOf("</");
-					String columnType = columnTypeXML.substring(
-							indexGreaterThan, indexSecondLessThan);
-
-					//TreeNodeImpl columnNode = new TreeNodeImpl();
-
-					//columnNode.setData(columnName + ": " + columnType);
-					//tableNode.addChild(columnIndex, columnNode); 
-				}
-
-			}
-
-			tableNamesList.add(tableName);
-			//tableNode.setData(tableName);
-			//databaseNode.addChild(tableIndex, tableNode);
-		}
-	}
-*/
+	
 	public ArrayList<ExtendedCapability> getCapabilityList() {
 
 		// if (capabilityList == null) {
@@ -623,26 +509,7 @@ public class RegistryBrowser {
 	public void setStringURL(String stringURLValue) {
 		stringURL = stringURLValue;
 	}
-/*
-	public ArrayList<String> getTableNamesList() {
-		buildTableNameList();
-		return tableNamesList;
-	}
 
-	public void setTableNamesList(ArrayList<String> tableNamesList) {
-		this.tableNamesList = tableNamesList;
-	}
-
-	public TreeNodeImpl getDatabaseNode() {
-
-		buildTableNameList();
-		return databaseNode;
-	}
-
-	public void setDatabaseNode(TreeNodeImpl databaseNode) {
-		this.databaseNode = databaseNode;
-	}
-*/
 	public String getTapQuery() {
 		return tapQuery;
 	}
@@ -686,33 +553,6 @@ public class RegistryBrowser {
 			e.printStackTrace();
 		}
 		queryResult = tempTAPQuery.getQueryResult();
-
-		/*
-		 * String tapURL = stringURL + "/sync?"; QueryString queryString = new
-		 * QueryString("REQUEST", "doQuery"); queryString.add("LANG", "ADQL");
-		 * queryString.add("QUERY", tapQuery);
-		 * 
-		 * @SuppressWarnings("unused") DocumentBuilderFactory factory =
-		 * DocumentBuilderFactory.newInstance(); System.out.println(tapURL +
-		 * queryString.toString());
-		 * 
-		 * try { URL completeURL = new URL(tapURL + queryString.toString());
-		 * InputStream input = new BufferedInputStream(completeURL
-		 * .openStream()); InputStreamReader reader = new
-		 * InputStreamReader(input); BufferedReader bufferedReader = new
-		 * BufferedReader(reader); // int c; String line; //Document
-		 * queryResultDoc = factory.newDocumentBuilder().parse(input);
-		 * 
-		 * while((line = bufferedReader.readLine()) != null){
-		 * //System.out.print(line); queryResult = queryResult + line + "\n";
-		 * 
-		 * }
-		 * 
-		 * //System.out.println("Query Result: " + queryResult); } catch
-		 * (MalformedURLException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } catch (Exception e) { // TODO Auto-generated
-		 * catch block e.printStackTrace(); }
-		 */
 
 		this.queryInputBox = false;
 

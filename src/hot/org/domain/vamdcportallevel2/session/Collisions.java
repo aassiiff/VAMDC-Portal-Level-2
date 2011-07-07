@@ -14,6 +14,12 @@ public class Collisions {
 	private boolean reactants = false;
 	private boolean products = false;
 	
+	private boolean editable = true;
+	
+	public void toggleEditable() {
+		editable = !editable;
+	}
+	
 	public String getQueryString() {
 		String xsamsQuery = "";
 
@@ -53,6 +59,14 @@ public class Collisions {
 		return xsamsQuery;
 	}
 	
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
 	public void clearFields() {
 		collisionIAEACode = "";
 		collisionCode = "";

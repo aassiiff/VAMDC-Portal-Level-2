@@ -12,7 +12,7 @@
 
 	<h:panelGrid columns="2" style="vertical-align:top; valign: top;">
 		<h:panelGrid columns="1">
-			<rich:spacer width="100" />
+			<rich:spacer width="100"/>
 		</h:panelGrid>
 		<rich:panel style="background-color:#E9F1FF" >
 			<f:facet name="header">
@@ -27,19 +27,19 @@
 					<h:outputText value="Atomic (elemental) symbol:" />
 					<rich:spacer width="23" />
 					<h:inputText value="#{speciesAtoms.atomSymbol}"
-						style=" width : 180px;">
+						style=" width : 180px;" disabled="#{not speciesMolecules.editable}">
 					</h:inputText>
 					
 					<h:outputText value="Atom Inchi:" />
 					<rich:spacer width="0" />
 					<h:inputText value="#{speciesAtoms.atomInchi}"
-						style=" width : 180px;">
+						style=" width : 180px;" disabled="#{not speciesMolecules.editable}">
 					</h:inputText>
 					
 					<h:outputText value="Atom Inchi Key:" />
 					<rich:spacer width="0" />
 					<h:inputText value="#{speciesAtoms.atomInchiKey}"
-						style=" width : 180px;">
+						style=" width : 180px;" disabled="#{not speciesMolecules.editable}">
 					</h:inputText>
 				</h:panelGrid>
 				
@@ -48,11 +48,11 @@
 					<rich:spacer width="10" height="10" />
 					<h:outputText value="Range" />
 					<h:inputText value="#{speciesAtoms.atomMassNumberFrom}"
-						style=" width : 85px;">
+						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
 					</h:inputText>
 					<h:outputText value=" " style=" font : bold;" />
 					<h:inputText value="#{speciesAtoms.atomMassNumberTo}"
-						style=" width : 85px;">
+						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
 					</h:inputText>
 
 					<h:outputText value="Atom Ion Charge:"></h:outputText>
@@ -60,12 +60,12 @@
 					<h:outputText value="Range">
 					</h:outputText>
 					<h:inputText value="#{speciesAtoms.atomIonChargeFrom}"
-						style=" width : 85px;">
+						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" />
 					</h:inputText>
 					<h:outputText value=" " style=" font : bold;" />
 					<h:inputText value="#{speciesAtoms.atomIonChargeTo}"
-						style=" width : 85px;">
+						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
 					</h:inputText>
 					
 					<h:outputText value="Atom Nuclear Charge:"></h:outputText>
@@ -73,12 +73,12 @@
 					<h:outputText value="Range">
 					</h:outputText>
 					<h:inputText value="#{speciesAtoms.atomNuclearChargeFrom}"
-						style=" width : 85px;">
+						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" />
 					</h:inputText>
 					<h:outputText value=" " style=" font : bold;" />
 					<h:inputText value="#{speciesAtoms.atomNuclearChargeTo}"
-						style=" width : 85px;">
+						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
 					</h:inputText>
 				</h:panelGrid>
 			</h:panelGrid>		 

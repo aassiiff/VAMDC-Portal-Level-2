@@ -21,6 +21,11 @@ public class SpeciesMolecules {
 	private String moleculeProtonationFrom = null;
 	private String moleculeProtonationTo = null;
 	
+	private boolean editable = true;
+	
+	public void toggleEditable() {
+		editable = !editable;
+	}
 	public void clearFields(){
 		moleculeChemicalName = "";
 		moleculeInchiKey = "";
@@ -32,6 +37,12 @@ public class SpeciesMolecules {
 		moleculeProtonationTo = "";
 	}
 	
+	public boolean isEditable() {
+		return editable;
+	}
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
 	public String getMoleculeChemicalName() {
 		return moleculeChemicalName;
 	}

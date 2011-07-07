@@ -26,6 +26,12 @@ public class SpeciesAtoms {
 	// Atomic Nuclear Charge
 	private String atomNuclearChargeFrom = null;
 	private String atomNuclearChargeTo = null;
+	
+	private boolean editable = true;
+	
+	public void toggleEditable() {
+		editable = !editable;
+	}
 
 	public void clearFields() {
 		atomSymbol = "";
@@ -38,6 +44,18 @@ public class SpeciesAtoms {
 		atomNuclearChargeFrom = "";
 		atomNuclearChargeTo = "";
 	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
+
 
 	public String getAtomSymbol() {
 		return atomSymbol;

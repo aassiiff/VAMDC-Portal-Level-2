@@ -34,6 +34,12 @@ public class Transitions {
 	private boolean radTransBroadeningNatural = false;
 	private boolean radTransBroadeningPressure = false;
 	
+	private boolean editable = true;
+	
+	public void toggleEditable() {
+		editable = !editable;
+	}
+	
 	public void clearFields() {
 		radTransWavelengthFrom = "";
 		radTransWavelengthTo = "";
@@ -62,6 +68,14 @@ public class Transitions {
 		radTransBroadeningPressure = false;
 	}
 	
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
 	public String getQueryString() {
 		String xsamsQuery = "";
 

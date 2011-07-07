@@ -12,14 +12,14 @@
 </style>
 	<h:panelGrid columns="2">
 		<h:panelGrid columns="1">
-			<rich:spacer width="100" />
+			<rich:spacer width="130"/>
 		</h:panelGrid>
 		<h:panelGrid columns="6">
 			<rich:spacer width="15" />
 			<a4j:commandButton value="Clear" action="#{navigator.clearForm()}"
 				reRender="mainOptionPanel, formPanel1, formPanel2, formButtonsPanel"/>
 			<rich:spacer width="25" />
-			<a4j:commandButton value="Cancel" action="#{navigator.resetQueryBuilder()}"
+			<a4j:commandButton value="Cancel" action="#{navigator.cancelQueryBuilder()}"
 				reRender="mainOptionPanel, formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, rightPanel, formButtonsPanel"/>
 			<rich:spacer width="25" />
 			<a4j:commandButton value="Preview"
@@ -27,5 +27,4 @@
 				reRender="mainOptionPanel, formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, rightPanel, formButtonsPanel"></a4j:commandButton>
 		</h:panelGrid>
 	</h:panelGrid>
-<rich:spacer width="500"/>
 </ui:composition>
