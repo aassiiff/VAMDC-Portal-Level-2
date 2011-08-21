@@ -1,0 +1,73 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a="http://richfaces.org/a4j"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+ <rich:panel>
+    
+    	<h:form>
+    	<h:outputText value="#{indexCap}" />
+    		<rich:dataTable width="483" id="carList" rows="50" columnClasses="col"
+            value="#{registryBrowser.interfaceList}" var="categoryB">
+            <f:facet name="header">
+                <rich:columnGroup>
+                	<h:column>
+                        <h:outputText styleClass="headerText" value="Index" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Type" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Role" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Version" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Access URL" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Security Method" />
+                    </h:column>
+                </rich:columnGroup>
+            </f:facet>
+
+			<h:column>
+                <h:outputText value="#{categoryB.interfaceLocation}" />
+            </h:column>
+            <h:column>
+                <h:outputText value="#{categoryB.type}" />
+            </h:column>
+            <h:column>
+                <h:outputText value="#{categoryB.interfaceTemp.role}" />
+            </h:column>
+            <h:column>
+                <h:outputText value="#{categoryB.interfaceTemp.version}" />
+            </h:column>
+            <h:column>
+                <h:outputText value="#{categoryB.interfaceTemp.getAccessURLArray(0).getStringValue()}" />
+            </h:column>
+            <h:column>
+                <s:link view="/tapInterface.xhtml-DeleteIt" rendered="#{categoryB.interfaceTemp.getAccessURLArray(0).getStringValue().toUpperCase() .contains('TAP')}">
+                	<h:outputText value="Execute Query" />
+                	<f:param name="url" 
+                        value="#{categoryB.interfaceTemp.getAccessURLArray(0).getStringValue()}"/>
+                </s:link>
+                <s:link target="new">
+                <a href="#{categoryB.interfaceTemp.getAccessURLArray(0).getStringValue()}">Browse to External Link </a>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+    </h:form>
+	
+    </rich:panel>
+    
+</ui:define> 
+</ui:composition>

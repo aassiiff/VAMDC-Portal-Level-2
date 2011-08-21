@@ -1,0 +1,130 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+		<rich:panel>
+			<h:form>
+				<rich:dataTable width="483" id="queryListAll" rows="50"
+					columnClasses="col" value="#{queryLog.submittedQueryList}"
+					var="categoryAB">
+					<f:facet name="header">
+						<rich:columnGroup>
+							<h:column rowspan="2">
+								<h:outputText styleClass="headerText" value="Query" />
+							</h:column>
+							<h:column colspan="4">
+								<h:outputText styleClass="headerText" value="Resource"/>
+							</h:column>
+							<!--  
+							<h:column breakBefore="true">
+										<h:outputText styleClass="headerText" value="Nodes" />
+									</h:column>
+									<h:column>
+										<h:outputText styleClass="headerText" value="Status" />
+									</h:column>
+									<h:column>
+										<h:outputText styleClass="headerText" value="View" />
+									</h:column>
+									<h:column>
+										<h:outputText styleClass="headerText" value="Download URL" />
+									</h:column>
+							-->
+					<!--  
+                    <rich:column> 
+                        <h:outputText styleClass="headerText" value="Resource" />
+                    </rich:column>
+                    -->
+							
+					<!--  
+                    <h:column>
+                        <h:outputText styleClass="headerText" value="Download" />
+                    </h:column>
+                    -->
+							
+						</rich:columnGroup>
+					</f:facet>
+
+					<h:column>
+						<h:outputText value="#{categoryAB.queryString}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+								<rich:columnGroup>
+									
+								</rich:columnGroup>
+							</f:facet>
+						<rich:dataTable width="483" id="queryList"
+							onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+                    		onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+							value="#{categoryAB.submittedQueryList}" var="categoryB">
+							
+							<h:column>
+								<h:outputText
+									value="#{categoryB.resoourceURL}#{categoryB.encodedQuery}" />
+							</h:column>
+							<h:column>
+								<h:outputText value="Finished"
+									rendered="#{categoryB.queryStatus}" />
+								<h:outputText value="Executing"
+									rendered="#{not categoryB.queryStatus}" />
+							</h:column>
+							<h:column>
+								<s:link view="/queryResult.xhtml">
+									<h:outputText value="View"
+										rendered="#{categoryB.queryStatus and categoryB.queryType == 'TAP'}" />
+									<f:param name="queryIndex" value="#{categoryB.indexInList}" />
+								</s:link>
+				<!--                  
+                <s:link target="new" rendered="#{categoryB.queryStatus and categoryB.queryType == 'xsams'}">
+                	<a href="http://localhost:9090/?htmlFile=#{categoryB.queryID}.html">View</a>
+                </s:link>
+                -->
+								<s:link
+									rendered="#{categoryB.queryStatus and categoryB.queryType == 'XSAMS'}"
+									onclick="window.open('#{registryBrowser.staticApplicationURL}/html/#{categoryB.queryID}.html','htmlwindow','width=1200,height=800')"
+									disabled="true">
+									<h:outputText value="View" />
+								</s:link>
+							</h:column>
+
+							<h:column rendered="#{categoryB.queryStatus}">
+								<s:link
+									rendered="#{categoryB.queryStatus and categoryB.queryType == 'XSAMS'}"
+									onclick="window.open('#{registryBrowser.staticApplicationURL}/xsams/#{categoryB.queryID}.xml','xsamswindow','width=1200,height=800')">
+									<h:outputText value="View" />
+								</s:link>
+							</h:column>
+						</rich:dataTable>
+					</h:column>
+
+					<!--  
+            <h:column>
+                <h:outputText value="#{categoryB.resource.title}" />
+            </h:column>
+            -->
+					<!--  
+            <h:column>                        
+            	<s:link target="new" rendered="#{categoryB.queryStatus}">
+                	<a href="http://localhost:9090/?htmlFile=#{categoryB.queryID}.xml">Download</a>
+                </s:link>
+            </h:column>
+            -->
+
+				</rich:dataTable>
+				
+				<h:panelGrid columns="6" id="stage2ButtonPanel">
+					<a4j:commandButton value="OK" action="#{navigator.cancelQueryBuilder()}"
+						reRender="mainOptionPanel, formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, rightPanel, formButtonsPanel" />
+				</h:panelGrid>
+			</h:form>
+
+		</rich:panel>
+
+</ui:composition>

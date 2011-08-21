@@ -1,0 +1,210 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:jstl="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j" template="layout/template.xhtml">
+
+	<script>
+<!--
+
+
+function popupPDFWindow(){
+   //window.open(cmd,'PDF','toolbar=0,modal=1,dialog=1,scrollbars=1,alwaysRaised=1,width=840,height=480,resizable=1');
+}
+// -->
+</script>
+	<ui:define name="body">
+
+		<rich:modalPanel id="panel" width="350" height="200">
+			<f:facet name="header">
+				<h:panelGroup>
+					<h:outputText value="Resource Information"></h:outputText>
+				</h:panelGroup>
+			</f:facet>
+			<f:facet name="controls">
+				<h:panelGroup>
+					<h:graphicImage value="/img/close_icon.png" styleClass="hidelink"
+						id="hidelink" />
+					<rich:componentControl for="panel" attachTo="hidelink"
+						operation="hide" event="onclick" />
+				</h:panelGroup>
+			</f:facet>
+			<table align="right">
+				<tr>
+					<td><s:link value="Close It" id="hidelinkText">
+						<rich:componentControl for="panel" attachTo="hidelinkText"
+							operation="hide" event="onclick" />
+					</s:link></td>
+				</tr>
+			</table>
+			<h:outputText
+				value="Title: #{registryBrowser.selectedExtendedRegistry.resource.title}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Identifier: #{registryBrowser.selectedExtendedRegistry.resource.identifier}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Short Name: #{registryBrowser.selectedExtendedRegistry.resource.shortName}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Created: #{registryBrowser.selectedExtendedRegistry.resource.created.toString()}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Status: #{registryBrowser.selectedExtendedRegistry.resource.status}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Updated: #{registryBrowser.selectedExtendedRegistry.resource.updated.toString()}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Description: #{registryBrowser.selectedExtendedRegistry.resource.content.description}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Reference: #{registryBrowser.selectedExtendedRegistry.resource.content.referenceURL}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Publisher ID: #{registryBrowser.selectedExtendedRegistry.resource.curation.publisher.ivoId}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Contact Email: #{registryBrowser.selectedExtendedRegistry.contactEmail}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Contact ID: #{registryBrowser.selectedExtendedRegistry.contactID}"></h:outputText>
+			<br />
+			<h:outputText
+				value="Restrictable List: #{registryBrowser.selectedExtendedRegistry.getsetRestrictableListAsString()}"></h:outputText>
+			<br />
+
+
+		</rich:modalPanel>
+
+		<h:messages globalOnly="true" styleClass="message" />
+
+		<h:form>
+			<rich:dataTable width="483" id="carList" rows="30"
+				columnClasses="col" value="#{registryBrowser.extendedRegistryList}"
+				var="categoryA">
+				<f:facet name="header">
+					<rich:columnGroup>
+						<rich:column rowspan="2">
+							<h:outputText styleClass="headerText" value="Resource" />
+						</rich:column>
+
+						<rich:column rowspan="2">
+							<h:outputText styleClass="headerText" value="Keywords" />
+						</rich:column>
+
+						<!--  
+						<rich:column colspan="3">
+							<h:outputText styleClass="headerText" value="Get Data" />
+						</rich:column>
+-->
+						<rich:column rowspan="2">
+							<h:outputText styleClass="headerText" value="Restrictables" />
+						</rich:column>
+
+						<rich:column rowspan="2">
+							<h:outputText styleClass="headerText" value="Run Application" />
+						</rich:column>
+						<!--  
+						<rich:column breakBefore="true">
+							<h:outputText value="via TAP" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="via XSAMS" />
+						</rich:column>
+						<rich:column>
+							<h:outputText value="via Website" />
+						</rich:column>
+						-->
+					</rich:columnGroup>
+				</f:facet>
+
+				<h:column>
+					<!--  
+            	<h:outputLink value="#" id="link">
+                <h:outputText value="#{categoryA.resource.title}" />
+                 <rich:componentControl for="panel" attachTo="link" operation="show" event="onclick">
+                 	
+                 </rich:componentControl>
+                 </h:outputLink>
+                 -->
+					<a4j:commandLink
+						action="#{registryBrowser.setResourceIndex(categoryA.resourceLocation)}"
+						reRender="panel"
+						oncomplete="Richfaces.showModalPanel('panel',{width:450, top:200})">
+						<h:outputText value="#{categoryA.resource.title}" />
+					</a4j:commandLink>
+
+
+				</h:column>
+
+				<h:column>
+					<h:outputText value="#{categoryA.resource.shortName}" />
+				</h:column>
+				<h:column>
+					<h:dataTable id="dt2" value="#{categoryA.restrictableList}"
+						var="restrictable">
+						<h:column >
+							<h:outputText value="#{restrictable}"></h:outputText>
+						</h:column>
+					</h:dataTable>
+				</h:column>
+				<!-- 
+				<h:column>
+
+					<s:link view="/tapInterface.xhtml-DeleteIt" rendered="#{categoryA.hasTAP}">
+						<h:outputText value="[TAP]" />
+						<f:param name="url" value="#{categoryA.tapURL}" />
+						<f:param name="index" value="#{categoryA.resourceLocation}" />
+					</s:link>
+				</h:column>
+
+				<h:column>
+					<s:link view="/xsamInterface.xhtml" rendered="#{categoryA.hasXSAM}">
+						<h:outputText value="[XSAM]" />
+						<f:param name="url" value="#{categoryA.xsamURL}" />
+						<f:param name="index" value="#{categoryA.resourceLocation}" />
+					</s:link>
+				</h:column>
+
+				<h:column>
+					<s:link rendered="#{categoryA.hasWEB}" onclick="window.open('#{categoryA.webURL}','mywindow','width=1200,height=800')">
+						<h:outputText value="[website]"/>
+					</s:link>
+				</h:column>
+ -->
+				<h:column>
+					<s:link view="/componentHolder.xhtml" disabled="true">
+						<h:outputText value="#{categoryA.resource.identifier}" />
+						<f:param name="from" value="home.xhtml" />
+						<f:param name="index" value="#{categoryA.resourceLocation}" />
+					</s:link>
+				</h:column>
+			</rich:dataTable>
+		</h:form>
+		<!--  
+		<rich:panel>
+			<table align="right">
+				<tr>
+					<td><rich:spacer width="240" height="10" /></td>
+					<td><rich:spacer width="315" height="10" /></td>
+					<td bgcolor="#C2DFFF"><s:link view="/xsamInterface.xhtml"
+						value="Submit Multiple XSAMS Queries"
+						disabled="#{registryBrowser.xsamsListForCheckBoxes.isEmpty()}"
+						style="font-size: 16px; color: black; "
+						onmouseover="style.fontSize='20px';"
+						onmouseout="style.fontSize='16px';" /></td>
+					<td></td>
+				</tr>
+				<tr></tr>
+			</table>
+			<br />
+		</rich:panel>
+	-->
+	</ui:define>
+</ui:composition>

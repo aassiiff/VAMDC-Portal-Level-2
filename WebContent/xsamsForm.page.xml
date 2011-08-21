@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd" 
+      action="#{xsamsQueryNew.populateExtendedRegistryList}">
+      
+      
+      <param name="from"/>
+      <!-- Page can have so that method should be
+           called before displaying page ... action="#{registryBrowser.executeQuery}" 
+
+	
+	<param name="index" value="#{registryBrowser.resourceIndex}"/>
+	<param name="url" value="#{registryBrowser.stringURL}"/>
+	-->
+
+</page>

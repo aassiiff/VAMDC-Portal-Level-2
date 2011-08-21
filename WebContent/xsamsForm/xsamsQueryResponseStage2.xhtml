@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<rich:dataTable width="583" id="headResponseList" rows="30"
+		columnClasses="col" value="#{xsamsQueryNew.getHeadResponseList()}"
+		var="headResponse">
+		<f:facet name="header">
+			<rich:columnGroup>
+				<rich:column>
+					<h:outputText styleClass="headerText" value="Resource Title 2" />
+				</rich:column>
+
+				<rich:column>
+					<h:outputText styleClass="headerText" value="Status Message 2" />
+				</rich:column>
+
+				<rich:column>
+					<h:outputText styleClass="headerText" value="Radiative Count" />
+				</rich:column>
+
+				<rich:column>
+					<h:outputText styleClass="headerText" value="States Count" />
+				</rich:column>
+
+			</rich:columnGroup>
+		</f:facet>
+
+		<h:column>
+			<h:selectManyCheckbox
+				value="#{xsamsQueryNew.selectedURLFromCheckBox}">
+				<f:selectItem itemLabel="#{headResponse.nodeTitle}"
+					itemValue="#{headResponse.URL}"
+					itemDisabled="#{headResponse.checkBoxDisabled()}" />
+			</h:selectManyCheckbox>
+		</h:column>
+
+		<h:column>
+			<h:outputText value="#{headResponse.statusMessage}" />
+		</h:column>
+
+		<h:column>
+			<h:outputText value="#{headResponse.countRadiative}" />
+		</h:column>
+
+		<h:column>
+			<h:outputText value="#{headResponse.countStates}" />
+		</h:column>
+
+	</rich:dataTable>
+
+</ui:composition>

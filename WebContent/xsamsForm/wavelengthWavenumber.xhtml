@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<style>
+.top {
+	vertical-align: top;
+}
+
+.pbody {
+	padding: 0px;
+	height: 120px;
+	width: 150px;
+}
+</style>
+
+	<h:panelGrid columns="2">
+		<h:panelGrid columns="1">
+			<rich:spacer width="100"/>
+		</h:panelGrid>
+		<rich:panel style="background-color:#E9F1FF">
+			<f:facet name="header">
+				<h:outputText value="Wavenumber"></h:outputText>
+			</f:facet>
+			<h:panelGrid columns="1" columnClasses="top, top">
+				<h:panelGrid columns="6" columnClasses="top, top">
+					<h:outputText value="RadTransWavenumber:" />
+					<rich:spacer width="157" height="10" />
+					<h:outputText value="from" />
+					<h:inputText value="#{wavelengthWaveNumber.radTransWavenumberFrom}"
+						style=" width : 80px;" />
+					<h:outputText value="to" style=" font : bold;" />
+					<h:inputText value="#{wavelengthWaveNumber.radTransWavenumberTo}"
+						style=" width : 80px;" />
+					<!--  
+					<h:outputText value="Non RadTransEnergy:" ></h:outputText>
+					<rich:spacer/>
+					<h:outputText value="from"> </h:outputText>
+					<h:inputText value="#{wavelengthEnergy.nonRadTranEnergyFrom}" 
+						style=" width : 80px;" />
+					<h:outputText value="to" style=" font : bold;" />
+					<h:inputText value="#{wavelengthEnergy.nonRadTranEnergyTo}"
+						style=" width : 80px;" />
+					
+					<h:outputText value="Atom State Energy:" />
+					<rich:spacer/>
+					<h:outputText value="from" />
+					<h:inputText value="#{wavelengthEnergy.atomStateEnergyFrom}" 
+						style=" width : 80px;"/>
+					<h:outputText value="to" style=" font : bold;" />
+					<h:inputText value="#{wavelengthEnergy.atomStateEnergyTo}"
+						style=" width : 80px;" />
+
+					<h:outputText value="Atom State Ionization Energy:" ></h:outputText>
+					<rich:spacer/>
+					<h:outputText value="from"> </h:outputText>
+					<h:inputText value="#{wavelengthEnergy.aAtomStateIonizationEnergyFrom}" 
+						style=" width : 80px;" />
+					<h:outputText value="to" style=" font : bold;" />
+					<h:inputText value="#{wavelengthEnergy.aAtomStateIonizationEnergyTo}"
+						style=" width : 80px;" />
+						
+					<h:outputText value="Molecule State Energy:" />
+					<rich:spacer/>
+					<h:outputText value="from" />
+					<h:inputText value="#{wavelengthEnergy.moleculeStateEnergyFrom}" 
+						style=" width : 80px;"/>
+					<h:outputText value="to" style=" font : bold;" />
+					<h:inputText value="#{wavelengthEnergy.moleculeStateEnergyTo}"
+						style=" width : 80px;" />
+
+					<h:outputText value="Molecule State Energy Origin:" ></h:outputText>
+					<rich:spacer/>
+					<h:outputText value="from"> </h:outputText>
+					<h:inputText value="#{wavelengthEnergy.moleculeStateEnergyOriginFrom}" 
+						style=" width : 80px;" />
+					<h:outputText value="to" style=" font : bold;" />
+					<h:inputText value="#{wavelengthEnergy.moleculeStateEnergyOriginTo}"
+						style=" width : 80px;" />
+						-->
+				</h:panelGrid>
+			</h:panelGrid>
+		</rich:panel>
+	</h:panelGrid>
+</ui:composition>
