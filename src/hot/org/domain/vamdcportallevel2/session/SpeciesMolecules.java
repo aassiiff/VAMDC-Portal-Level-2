@@ -450,7 +450,7 @@ public class SpeciesMolecules {
 		List<MoleculeNames> moleculeNamesList = new MoleculeNamesHome().findByMolecName(moleculeChemicalName);
 		if(moleculeNamesList.size() > 0){
 			System.out.println(moleculeNamesList.get(0).getMolecName() + "  " + moleculeNamesList.get(0).getMolecId());
-			List<Isotopologues> isotopologuesList = new IsotopologuesHome().findByMolecName(moleculeNamesList.get(0).getMolecId());
+			isotopologuesList = new IsotopologuesHome().findByMolecName(moleculeNamesList.get(0).getMolecId());
 			System.out.println(isotopologuesList.size() + "  " + isotopologuesList.get(0).getInChIkey());
 		}
 		
