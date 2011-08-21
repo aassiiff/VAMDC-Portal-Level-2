@@ -29,7 +29,11 @@
 			</rich:columnGroup>
 		</f:facet>
 		<h:column>
-			<h:outputText value="#{_moleculesDBQuery.isoName}" />
+			<h:selectManyCheckbox
+				value="#{speciesMolecules.selectedIsotopesFromCheckBox}">
+				<f:selectItem itemLabel="#{_moleculesDBQuery.isoName}"
+					itemValue="#{_moleculesDBQuery.inChIkey}"/>
+			</h:selectManyCheckbox>
 		</h:column>
 		
 		<h:column>

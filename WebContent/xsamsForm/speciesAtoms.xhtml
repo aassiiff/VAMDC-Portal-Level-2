@@ -17,7 +17,7 @@
 		<rich:panel style="background-color:#E9F1FF" >
 			<f:facet name="header">
 				<h:outputText>Atoms
-				<rich:spacer width="293" />
+				<rich:spacer width="350" />
 				<a4j:commandLink reRender="formPanel1, formButtonsPanel" action="#{navigator.clearAtomsForm()}" rendered="#{!navigator.stage1Display}">				
 	                <h:outputText value="X Close" /> 
 	            </a4j:commandLink></h:outputText>
@@ -27,7 +27,7 @@
 					<h:outputText value="Atomic (elemental) symbol:" />
 					<rich:spacer width="23" />
 					<h:inputText value="#{speciesAtoms.atomSymbol}"
-						style=" width : 180px;" disabled="#{not speciesMolecules.editable}">
+						style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
 							<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomSymbol', speciesAtoms.atomSymbol, '')}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
@@ -35,7 +35,7 @@
 					<h:outputText value="Atom Inchi:" />
 					<rich:spacer width="0" />
 					<h:inputText value="#{speciesAtoms.atomInchi}"
-						style=" width : 180px;" disabled="#{not speciesMolecules.editable}">
+						style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomInchi', speciesAtoms.atomInchi, '')}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
@@ -43,7 +43,7 @@
 					<h:outputText value="Atom Inchi Key:" />
 					<rich:spacer width="0" />
 					<h:inputText value="#{speciesAtoms.atomInchiKey}"
-						style=" width : 180px;" disabled="#{not speciesMolecules.editable}">
+						style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomInchiKey', speciesAtoms.atomInchiKey, '')}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
@@ -51,16 +51,16 @@
 				
 				<h:panelGrid columns="6">
 					<h:outputText value="Atom Mass Number:" />
-					<rich:spacer width="10" height="10" />
+					<rich:spacer width="32" height="10" />
 					<h:outputText value="Range" />
 					<h:inputText value="#{speciesAtoms.atomMassNumberFrom}"
-						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
+						style=" width : 104px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomMassNumber', speciesAtoms.atomMassNumberFrom, speciesAtoms.atomMassNumberTo)}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
 					<h:outputText value=" " style=" font : bold;" />
 					<h:inputText value="#{speciesAtoms.atomMassNumberTo}"
-						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
+						style=" width : 104px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomMassNumber', speciesAtoms.atomMassNumberTo, speciesAtoms.atomMassNumberFrom)}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
@@ -70,13 +70,13 @@
 					<h:outputText value="Range">
 					</h:outputText>
 					<h:inputText value="#{speciesAtoms.atomIonChargeFrom}"
-						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
+						style=" width : 104px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomIonCharge', speciesAtoms.atomIonChargeFrom, speciesAtoms.atomIonChargeTo)}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
 					<h:outputText value=" " style=" font : bold;" />
 					<h:inputText value="#{speciesAtoms.atomIonChargeTo}"
-						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
+						style=" width : 104px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomIonCharge', speciesAtoms.atomIonChargeTo, speciesAtoms.atomIonChargeFrom)}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
@@ -86,13 +86,13 @@
 					<h:outputText value="Range">
 					</h:outputText>
 					<h:inputText value="#{speciesAtoms.atomNuclearChargeFrom}"
-						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
+						style=" width : 104px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomNuclearCharge', speciesAtoms.atomNuclearChargeFrom, speciesAtoms.atomNuclearChargeTo)}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
 					<h:outputText value=" " style=" font : bold;" />
 					<h:inputText value="#{speciesAtoms.atomNuclearChargeTo}"
-						style=" width : 85px;" disabled="#{not speciesAtoms.editable}">
+						style=" width : 104px;" disabled="#{not speciesAtoms.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomNuclearCharge', speciesAtoms.atomNuclearChargeTo, speciesAtoms.atomNuclearChargeFrom)}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>

@@ -25,7 +25,7 @@
 		<rich:panel style="background-color:#E9F1FF">
 			<f:facet name="header">
 				<h:outputText>Molecules
-				<rich:spacer width="280" />
+				<rich:spacer width="320" />
 				<a4j:commandLink reRender="formPanel1A, formButtonsPanel" action="#{navigator.clearMoleculesForm()}"
 					rendered="#{!navigator.stage1Display}">				
 	                <h:outputText value="X Close" /> 
@@ -36,7 +36,7 @@
 				<h:panelGrid columns="3" columnClasses="top, top">
 					<h:outputText value="Chemical Name:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{speciesMolecules.moleculeChemicalName}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}">
+					<h:inputText value="#{speciesMolecules.moleculeChemicalName}" style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeChemicalName', speciesMolecules.moleculeChemicalName, '')}" 
 								reRender="rightPanel"></a4j:support>
 						<a4j:support event="onblur" action="#{speciesMolecules.getMoleculeNameQuery}" reRender="moleculesDBQueryPanel"></a4j:support>
@@ -45,14 +45,14 @@
 					<h:outputText value="Stoichiometric Formula:" />
 					<rich:spacer width="20" height="10" />
 					<h:inputText
-						value="#{speciesMolecules.moleculeOrdinaryStructuralFormula}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}">
+						value="#{speciesMolecules.moleculeOrdinaryStructuralFormula}" style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
 							<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('MoleculeStoichiometricFormula', speciesMolecules.moleculeOrdinaryStructuralFormula, '')}" 
 								reRender="rightPanel"></a4j:support>
 						</h:inputText>
 
 					<h:outputText value="Molecule InChI:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputTextarea value="#{speciesMolecules.moleculeInchi}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}" rows="2">
+					<h:inputTextarea value="#{speciesMolecules.moleculeInchi}" style=" width : 261px;" disabled="#{not speciesMolecules.editable}" rows="2">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeInchi', speciesMolecules.moleculeInchi, '')}" 
 								reRender="rightPanel"></a4j:support>
 								<a4j:support event="onblur" action="#{speciesMolecules.getImageFromInchiFunction}" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
@@ -60,10 +60,12 @@
 
 					<h:outputText value="Molecule InChI Key:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{speciesMolecules.moleculeInchiKey}" style=" width : 181px;" disabled="#{not speciesMolecules.editable}">
+					<h:inputText value="#{speciesMolecules.moleculeInchiKey}" style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeInchiKey', speciesMolecules.moleculeInchiKey, '')}" 
 								reRender="rightPanel"></a4j:support>
-						<a4j:support event="onblur" action="#{speciesMolecules.getImageFromInchiKeyFunction}" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
+								<!-- -->
+						<a4j:support event="onblur" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
+						
 					</h:inputText>
 
 					

@@ -2,7 +2,7 @@ package org.domain.vamdcportallevel2.entity;
 
 import java.util.UUID;
 
-import org.domain.vamdcportallevel2.session.TAPHTTPGet;
+import org.vamdc.portal.session.tap.TAPHTTPGet;
 
 public class TAPQuery implements Runnable{
 	
