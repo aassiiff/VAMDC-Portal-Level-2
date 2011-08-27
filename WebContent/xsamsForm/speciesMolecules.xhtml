@@ -7,16 +7,20 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 	<style>
-.top {
-	vertical-align: top;
-}
-
-.pbody {
-	padding: 0px;
-	height: 120px;
-	width: 150px;
-}
-</style>
+		.top {
+			vertical-align: top;
+		}
+		
+		.pbody {
+			padding: 0px;
+			height: 120px;
+			width: 150px;
+		}
+		.inputTextClass {
+			 background-color:pink;
+			font-size:08px
+		}
+	</style>
 
 	<h:panelGrid columns="2">
 		<h:panelGrid columns="1">
@@ -32,45 +36,89 @@
 	            </a4j:commandLink></h:outputText>				
 			</f:facet>
 
-			<h:panelGrid columns="2" columnClasses="top, top" id="speciesMoleculesPanel">
+			<h:panelGrid columns="1" columnClasses="top, top" id="speciesMoleculesPanel">
 				<h:panelGrid columns="3" columnClasses="top, top">
 					<h:outputText value="Chemical Name:" />
-					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{speciesMolecules.moleculeChemicalName}" style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
+					<rich:spacer width="30" height="10" />
+					<h:inputText id="moleculeChemicalName"
+						value="#{speciesMolecules.moleculeChemicalName}" style=" width : 265px;" disabled="#{not speciesMolecules.moleculeChemicalNameBoolean}" 
+						styleClass="#{not speciesMolecules.moleculeChemicalNameBoolean ? 'inputTextClass' : 'color:pink'}">
+						
+						<a4j:support event="onblur" action="#{speciesMolecules.disableIndividualFieldsOnBlur('moleculeChemicalName')}" 
+								reRender="moleculeStoichiometricFormula, moleculeInchiKey, moleculeInchi, moleculesDBQueryPanel"></a4j:support>
+								
+						<a4j:support event="onfocus" action="#{speciesMolecules.disableIndividualFieldsOnFocus('moleculeChemicalName')}" 
+								reRender="moleculeStoichiometricFormula, moleculeInchiKey, moleculeInchi"></a4j:support>
+								
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeChemicalName', speciesMolecules.moleculeChemicalName, '')}" 
 								reRender="rightPanel"></a4j:support>
-						<a4j:support event="onblur" action="#{speciesMolecules.getMoleculeNameQuery}" reRender="moleculesDBQueryPanel"></a4j:support>
+								
 					</h:inputText>
 					
 					<h:outputText value="Stoichiometric Formula:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText
-						value="#{speciesMolecules.moleculeOrdinaryStructuralFormula}" style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
-							<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('MoleculeStoichiometricFormula', speciesMolecules.moleculeOrdinaryStructuralFormula, '')}" 
+					<h:inputText id="moleculeStoichiometricFormula"
+						value="#{speciesMolecules.moleculeStoichiometricFormula}" style=" width : 265px;" disabled="#{not speciesMolecules.moleculeOrdinaryStructuralFormulaBoolean}"
+						styleClass="#{not speciesMolecules.moleculeOrdinaryStructuralFormulaBoolean ? 'inputTextClass' : 'color:pink'}">
+						
+							<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('MoleculeStoichiometricFormula', speciesMolecules.moleculeStoichiometricFormula, '')}" 
 								reRender="rightPanel"></a4j:support>
-						</h:inputText>
-
+								
+							<a4j:support event="onfocus" action="#{speciesMolecules.disableIndividualFieldsOnFocus('moleculeStoichiometricFormula')}" 
+								reRender="moleculeChemicalName, moleculeInchiKey, moleculeInchi, moleculesDBQueryPanel"></a4j:support>
+								
+							<a4j:support event="onblur" action="#{speciesMolecules.disableIndividualFieldsOnBlur('moleculeStoichiometricFormula')}" 
+								reRender="moleculeChemicalName, moleculeInchiKey, moleculeInchi, moleculesDBQueryPanel">
+								</a4j:support>
+					</h:inputText>
+				</h:panelGrid>
+					
+				<h:panelGrid columns="6">
+					<h:outputText value="Molecule Ion Charge:"></h:outputText>
+					<rich:spacer width="30" height="10" />
+					<h:outputText value="Range">
+					</h:outputText>
+					<h:inputText value="#{speciesMolecules.moleculeIonChargeFrom}"
+						style=" width : 104px;" disabled="#{not speciesMolecules.editable}">
+						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('MoleculeIonCharge', speciesMolecules.moleculeIonChargeFrom, speciesMolecules.moleculeIonChargeTo)}" 
+								reRender="rightPanel"></a4j:support>
+					</h:inputText>
+					<h:outputText value=" " style=" font : bold;" />
+					<h:inputText value="#{speciesMolecules.moleculeIonChargeTo}"
+						style=" width : 104px;" disabled="#{not speciesMolecules.editable}">
+						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('MoleculeIonCharge', speciesMolecules.moleculeIonChargeTo, speciesMolecules.moleculeIonChargeFrom)}" 
+								reRender="rightPanel"></a4j:support>
+					</h:inputText>
+				</h:panelGrid>
+					
+				<h:panelGrid columns="3" columnClasses="top, top">
 					<h:outputText value="Molecule InChI:" />
-					<rich:spacer width="20" height="10" />
-					<h:inputTextarea value="#{speciesMolecules.moleculeInchi}" style=" width : 261px;" disabled="#{not speciesMolecules.editable}" rows="2">
+					<rich:spacer width="60" height="10" />
+					<h:inputTextarea id="moleculeInchi"
+						value="#{speciesMolecules.moleculeInchi}" style=" width : 265px;" disabled="#{not speciesMolecules.moleculeInchiBoolean}" rows="2" 
+						styleClass="#{not speciesMolecules.moleculeInchiBoolean ? 'inputTextClass' : 'color:pink'}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeInchi', speciesMolecules.moleculeInchi, '')}" 
 								reRender="rightPanel"></a4j:support>
-								<a4j:support event="onblur" action="#{speciesMolecules.getImageFromInchiFunction}" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
+						<a4j:support event="onblur" action="#{speciesMolecules.getImageFromInchiFunction}" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
+						<a4j:support event="onfocus" action="#{speciesMolecules.disableIndividualFieldsOnFocus('moleculeInchi')}" 
+								reRender="moleculeOrdinaryStructuralFormula"></a4j:support>
 					</h:inputTextarea>
 
-					<h:outputText value="Molecule InChI Key:" />
-					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{speciesMolecules.moleculeInchiKey}" style=" width : 262px;" disabled="#{not speciesMolecules.editable}">
+					<h:outputText value="InChI Key:" />
+					<rich:spacer width="30" height="10" />
+					<h:inputText id="moleculeInchiKey"
+						value="#{speciesMolecules.moleculeInchiKey}" style=" width : 265px;" disabled="#{not speciesMolecules.moleculeInchiKeyBoolean}" 
+						styleClass="#{not speciesMolecules.moleculeInchiKeyBoolean ? 'inputTextClass' : 'color:pink'}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeInchiKey', speciesMolecules.moleculeInchiKey, '')}" 
 								reRender="rightPanel"></a4j:support>
 								<!-- -->
 						<a4j:support event="onblur" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
-						
-					</h:inputText>
-
-					
+						<a4j:support event="onfocus" action="#{speciesMolecules.disableIndividualFieldsOnFocus('moleculeInchiKey')}" 
+								reRender="moleculeOrdinaryStructuralFormula"></a4j:support>						
+					</h:inputText>					
 				</h:panelGrid>
 			</h:panelGrid>
+			
 			<h:panelGrid columns="1"  id="imageFromChemicalName">
 			 	<h:graphicImage id="frImage" value="#{speciesMolecules.imageFromChemicalName}" width="60%"/>
 			</h:panelGrid>

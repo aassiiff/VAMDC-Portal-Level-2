@@ -434,6 +434,8 @@ public class XSAMSQueryGeneratorNew {
 	public void toggleEditable(){
 		speciesAtoms.toggleEditable();
 		speciesMolecules.toggleEditable();
+		
+		speciesMolecules.emptySelectedIsotopesFromCheckBox2();
 		transitions.toggleEditable();
 		collisions.toggleEditable();
 	}

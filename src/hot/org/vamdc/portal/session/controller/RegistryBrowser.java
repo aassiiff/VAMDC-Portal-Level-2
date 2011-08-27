@@ -293,19 +293,24 @@ public class RegistryBrowser {
 				
 				if (capabilityTemp.getStandardID() != null) {
 					//log.info(tempResource.getIdentifier() + "  " + capabilityTemp.getStandardID().toUpperCase());
-					//log.info(capabilityTemp.getStandardID().toUpperCase());
+					/*
 					if (capabilityTemp.getStandardID().toUpperCase().contains(
-							"ivo://vamdc/std/VAMDC-TAP"/*"ivo://vamdc/std/TAP-XSAMS"*/)) {
+							"ivo://vamdc/std/VAMDC-TAP") || capabilityTemp.getStandardID().toUpperCase().contains(
+							"ivo://vamdc/std/TAP-XSAMS")) {
 						accessURLs[1] = buildInterfaceList(capabilityTemp);
-					}
+						log.info(capabilityTemp.getStandardID().toUpperCase());
+					}*/
 					if (capabilityTemp.getStandardID().toUpperCase().contains(
-							"TAP")) {
+							"VAMDC")) {
 
 						if (capabilityTemp.getStandardID().toUpperCase()
-								.contains("VAMDC-TAP")) {
+								.contains("VAMDC-TAP") || capabilityTemp.getStandardID().toUpperCase()
+								.contains("TAP-XSAMS") ) {
 							accessURLs[1] = buildInterfaceList(capabilityTemp);
+							log.info(capabilityTemp.getStandardID().toUpperCase());
 						} else {
 							accessURLs[0] = buildInterfaceList(capabilityTemp);
+							log.info("Else {0}", capabilityTemp.getStandardID().toUpperCase());
 						}
 					}
 				}

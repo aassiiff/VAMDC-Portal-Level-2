@@ -1,6 +1,11 @@
 package uk.ac.cam.ast.vamdc.portal.session;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import uk.ac.cam.ast.vamdc.portal.entity.*;
+
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
 
@@ -42,6 +47,14 @@ public class MoleculesHome extends EntityHome<Molecules> {
 
 	public Molecules getDefinedInstance() {
 		return isIdDefined() ? getInstance() : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Molecules> findByStoichiometricFormula(String stoichiometricFormula){
+		Query query = this.getEntityManager().createNamedQuery("Molecules.findByStoichiometricFormula");
+		query.setParameter("stoichiometricFormula", stoichiometricFormula);
+		List<Molecules> stoichiometricFormulaList = query.getResultList();
+		return stoichiometricFormulaList;
 	}
 
 }

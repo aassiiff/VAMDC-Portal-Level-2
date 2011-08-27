@@ -10,7 +10,9 @@
 	xmlns:a4j="http://richfaces.org/a4j">
 
 	<rich:dataTable id="moleculesDBQueryList" columnClasses="col"
-		value="#{speciesMolecules.isotopologuesList}" var="_moleculesDBQuery">
+		onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
+        onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
+		value="#{speciesMolecules.isotopologuesList}" var="_moleculesDBQuery" rendered="#{not empty speciesMolecules.isotopologuesList}">
 
 		<f:facet name="header">
 			<rich:columnGroup>

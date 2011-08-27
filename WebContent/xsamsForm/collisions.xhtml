@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -26,7 +27,7 @@
 		<rich:panel style="background-color:#E9F1FF">
 			<f:facet name="header">
 				<h:outputText>Collisions
-				<rich:spacer width="280" />
+				<rich:spacer width="330" />
 				<a4j:commandLink reRender="formPanel3, formButtonsPanel" action="#{navigator.clearCollisionsForm()}" 
 					rendered="#{!navigator.stage1Display}">				
 	                <h:outputText value="X Close" /> 
@@ -38,14 +39,14 @@
 				<h:panelGrid columns="3" columnClasses="top, top">
 					<h:outputText value="CollisionIAEACode:" />
 					<rich:spacer width="60" height="10" />
-					<h:inputText value="#{collisions.collisionIAEACode}" style=" width : 181px;" disabled="#{not collisions.editable}">
+					<h:inputText value="#{collisions.collisionIAEACode}" style=" width : 253px;" disabled="#{not collisions.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('collisionIAEACode', collisions.collisionIAEACode, '')}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
 
 					<h:outputText value="CollisionCode:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{collisions.collisionCode}" style=" width : 181px;" disabled="#{not collisions.editable}">
+					<h:inputText value="#{collisions.collisionCode}" style=" width : 253px;" disabled="#{not collisions.editable}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('collisionCode', collisions.collisionCode, '')}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
