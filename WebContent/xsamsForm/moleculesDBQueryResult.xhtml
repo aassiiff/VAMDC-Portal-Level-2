@@ -9,10 +9,11 @@
 	xmlns:jstl="http://java.sun.com/jsp/jstl/core"
 	xmlns:a4j="http://richfaces.org/a4j">
 
-	<rich:dataTable id="moleculesDBQueryList" columnClasses="col"
+	<rich:dataTable id="moleculesDBQueryList" 
 		onRowMouseOver="this.style.backgroundColor='#F1F1F1'"
         onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'"
-		value="#{speciesMolecules.isotopologuesList}" var="_moleculesDBQuery" rendered="#{not empty speciesMolecules.isotopologuesList}">
+		value="#{speciesMolecules.isotopologuesList}" var="_moleculesDBQuery" 
+			rendered="#{not empty speciesMolecules.isotopologuesList}">
 
 		<f:facet name="header">
 			<rich:columnGroup>
@@ -31,7 +32,7 @@
 			</rich:columnGroup>
 		</f:facet>
 		<h:column>
-			<h:selectManyCheckbox
+			<h:selectManyCheckbox immediate="false"
 				value="#{speciesMolecules.selectedIsotopesFromCheckBox}">
 				<f:selectItem itemLabel="#{_moleculesDBQuery.isoName}"
 					itemValue="#{_moleculesDBQuery.inChIkey}"/>
@@ -47,7 +48,10 @@
 			<h:outputText value="#{_moleculesDBQuery.inChIkey}" />
 		</h:column>
 
-
+		<f:facet name="footer">
+			<a4j:commandLink value="Select All" action="#{speciesMolecules.selectAllAction()}" reRender="moleculesDBQueryList"/>
+		</f:facet>
 	</rich:dataTable>
+	
 
 </ui:composition>

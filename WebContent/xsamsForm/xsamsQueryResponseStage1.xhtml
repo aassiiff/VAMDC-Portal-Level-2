@@ -103,7 +103,10 @@
 		<rich:spacer width="135" />		
 		<a4j:commandButton value="Cancel" action="#{navigator.cancelQueryBuilder()}"
 				reRender="mainOptionPanel, formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, rightPanel, formButtonsPanel"/>
-		<rich:spacer width="135" />
+		<rich:spacer width="125" />
+		
+		<h:graphicImage id="loadingImage" value="/img/loading_icon.gif" width="70%" rendered="#{xsamsQueryNew.pollEnabled}"/>
+			
 		<a4j:commandButton value="Get data" action="#{navigator.executeQueryStage2()}" 
 			disabled="#{xsamsQueryNew.pollEnabled}" rendered="#{not xsamsQueryNew.pollEnabled}"
 			reRender="mainOptionPanel, formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, rightPanel, formButtonsPanel"></a4j:commandButton>

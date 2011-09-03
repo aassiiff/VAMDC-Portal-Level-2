@@ -56,6 +56,12 @@ public class MoleculeNamesHome extends EntityHome<MoleculeNames> {
 		return moleculeNamesList;
 	}
 
-	
+	@SuppressWarnings("unchecked")
+	public List<MoleculeNames> findByMolecNameWildcard(String moleculeName){
+		Query query = this.getEntityManager().createNamedQuery("MoleculeNames.findByMolecNameWildcard");
+		query.setParameter("molecName", moleculeName + "%");
+		List<MoleculeNames> moleculeNamesList = query.getResultList();
+		return moleculeNamesList;
+	}
 
 }

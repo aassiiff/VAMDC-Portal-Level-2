@@ -35,30 +35,51 @@
 				
 			</f:facet>
 
-			<h:panelGrid columns="2" columnClasses="top, top">
+			<h:panelGrid columns="2" columnClasses="top, top" id="collisonsPanel">
 				<h:panelGrid columns="3" columnClasses="top, top">
-					<h:outputText value="CollisionIAEACode:" />
+					<h:outputText value="Process Name" />
 					<rich:spacer width="60" height="10" />
-					<h:inputText value="#{collisions.collisionIAEACode}" style=" width : 253px;" disabled="#{not collisions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('collisionIAEACode', collisions.collisionIAEACode, '')}" 
-								reRender="rightPanel"></a4j:support>
+					<h:inputText value="#{collisions.processName}" style=" width : 253px;" disabled="#{not collisions.editable}" id="processName">
+						<rich:suggestionbox for="processName" var="result" suggestionAction="#{collisions.autoCompleteForProcessName}" width="280" border="0">
+			                <h:column style=" width : 253px;">			
+			                	<h:outputText value="#{result.processName}" style=" width : 253px;"/>			
+			                </h:column>
+			                <a4j:support event="onselect" action="#{collisions.onSelectForProcessName}" reRender="collisonsPanel"/>	
+	                	</rich:suggestionbox>
 					</h:inputText>
-
-					<h:outputText value="CollisionCode:" />
+					
+					<h:outputText value="Process Description:" />
 					<rich:spacer width="20" height="10" />
-					<h:inputText value="#{collisions.collisionCode}" style=" width : 253px;" disabled="#{not collisions.editable}">
+					<h:inputTextarea value="#{collisions.processDescription}" style=" width : 253px;" disabled="true">
+						
+					</h:inputTextarea>
+					
+					<h:outputText value="Process Code:" />
+					<rich:spacer width="20" height="10" />
+					<h:inputText value="#{collisions.collisionCode}" style=" width : 253px;" disabled="#{not collisions.editable}" id="processCode">
+						<rich:suggestionbox for="processCode" var="result" suggestionAction="#{collisions.autoCompleteForProcessCode}" width="280" border="0">
+			                <h:column style=" width : 253px;">			
+			                	<h:outputText value="#{result.processCode}" style=" width : 253px;"/>			
+			                </h:column>
+			                <a4j:support event="onselect" action="#{collisions.onSelectForProcessCode}" reRender="collisonsPanel"/>	
+	                	</rich:suggestionbox>
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('collisionCode', collisions.collisionCode, '')}" 
 								reRender="rightPanel"></a4j:support>
 					</h:inputText>
+					
+					<h:outputText value="IAEA Process Code:" />
+					<rich:spacer width="60" height="10" />
+					<h:inputText value="#{collisions.collisionIAEACode}" style=" width : 253px;" disabled="#{not collisions.editable}" id="iaeaCode">
+						<rich:suggestionbox for="iaeaCode" var="result" suggestionAction="#{collisions.autoCompleteForIAEAsCode}" width="280" border="0">
+			                <h:column style=" width : 253px;">			
+			                	<h:outputText value="#{result.iaeaCode}" style=" width : 253px;"/>			
+			                </h:column>
+			                <a4j:support event="onselect" action="#{collisions.onSelectForIAEAsCode()}" reRender="collisonsPanel"/>	
+	                	</rich:suggestionbox>
+						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('collisionIAEACode', collisions.collisionIAEACode, '')}" 
+								reRender="rightPanel"></a4j:support>
+					</h:inputText>					
 
-					<h:outputText value="Reactants:" />
-					<rich:spacer width="20" height="10" />
-					<h:selectBooleanCheckbox value="#{collisions.reactants}" disabled="#{not collisions.editable}"/>
-
-					<h:outputText value="Products:" />
-					<rich:spacer width="20" height="10" />
-					<h:selectBooleanCheckbox
-						value="#{collisions.products}" disabled="#{not collisions.editable}"/>
 				</h:panelGrid>
 			</h:panelGrid>
 

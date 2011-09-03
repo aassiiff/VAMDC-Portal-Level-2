@@ -20,7 +20,7 @@
 </style>
 	<h:panelGrid columns="2">
 		<h:panelGrid columns="1">
-			<rich:spacer width="100"/>
+			<rich:spacer width="100" />
 		</h:panelGrid>
 		<rich:panel style="background-color:#E9F1FF">
 			<f:facet name="header">
@@ -28,215 +28,314 @@
 					Transitions
 				<rich:spacer width="275" />
 					<a4j:commandLink reRender="formPanel2, formButtonsPanel"
-						action="#{navigator.clearTransitionsForm()}" rendered="#{!navigator.stage1Display}">
+						action="#{navigator.clearTransitionsForm()}"
+						rendered="#{!navigator.stage1Display}">
 						<h:outputText value="X Close" />
 					</a4j:commandLink>
 				</h:outputText>
 			</f:facet>
 
 			<h:panelGrid columns="1" columnClasses="top, top">
-				<h:panelGrid columns="7" columnClasses="top, top">
-					<h:outputText value="RadTransWavelength:" />
-					<rich:spacer width="5" height="10" />
-					<h:outputText value="Range" />
-					<h:inputText value="#{transitions.radTransWavelengthFrom}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransWavelengthFrom, transitions.radTransWavelengthTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value="" style=" font : bold;" />
-					<h:inputText value="#{transitions.radTransWavelengthTo}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransWavelengthFrom, transitions.radTransWavelengthTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:selectOneMenu disabled="#{not transitions.editable}" 
-						value="#{transitions.radTransWavelengthSelectedUnit}">
-						<f:selectItem itemValue="Å"
-							itemLabel="Å" />
-						<f:selectItem itemValue="nm"
-							itemLabel="nm" />
-						<f:selectItem itemValue="mum"
-							itemLabel="mum" itemDisabled="true"/>
-							<f:selectItem itemValue="mm"
-							itemLabel="mm" />
-							<f:selectItem itemValue="m"
-							itemLabel="m" />
-					</h:selectOneMenu>
-
-					<h:outputText value="RadTransFrequency:" />
-					<rich:spacer  />
-					<h:outputText value="Range" />
-					<h:inputText value="#{transitions.radTransFrequencyFrom}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransFrequency', transitions.radTransFrequencyFrom, transitions.radTransFrequencyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value="" style=" font : bold;" />
-					<h:inputText value="#{transitions.radTransFrequencyTo}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransFrequency', transitions.radTransFrequencyFrom, transitions.radTransFrequencyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:selectOneMenu value="#{transitions.radTransFrequencySelectedUnit}" disabled="#{not transitions.editable}">
-						<f:selectItem itemValue="Hz"
-							itemLabel="Hz" />
-						<f:selectItem itemValue="kHz"
-							itemLabel="kHz" />
-						<f:selectItem itemValue="MHz"
-							itemLabel="MHz" />
-							<f:selectItem itemValue="GHz"
-							itemLabel="GHz" />
-							<f:selectItem itemValue="THz"
-							itemLabel="THz" />
-						<a4j:support event="onchange"></a4j:support>
-					</h:selectOneMenu>
-					
-
-					<h:outputText value="RadTransEnergy:" />
-					<rich:spacer />
-					<h:outputText value="Range" />
-					<h:inputText value="#{transitions.radTransEnergyFrom}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransEnergy', transitions.radTransEnergyFrom, transitions.radTransEnergyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value="" style=" font : bold;" />
-					<h:inputText value="#{transitions.radTransEnergyTo}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransEnergy', transitions.radTransEnergyFrom, transitions.radTransEnergyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:selectOneMenu disabled="#{not transitions.editable}"
-						value="#{transitions.radTransEnergySelectedUnit}">
-						<f:selectItem itemValue="eV"
-							itemLabel="eV" />
-						<f:selectItem itemValue="J"
-							itemLabel="J" />
-						<f:selectItem itemValue="erg"
-							itemLabel="erg" />
-					</h:selectOneMenu>
-					
-					<h:outputText value="RadTransWavenumber:" />
-					<rich:spacer />
-					<h:outputText value="Range" />
-					<h:inputText value="#{transitions.radTransWavenumberFrom}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransWavenumber', transitions.radTransWavenumberFrom, transitions.radTransWavenumberTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value="" style=" font : bold;" />
-					<h:inputText value="#{transitions.radTransWavenumberTo}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransWavenumber', transitions.radTransWavenumberFrom, transitions.radTransWavenumberTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:selectOneMenu disabled="#{not transitions.editable}" 
-						value="#{transitions.radTransWavenumberSelectedUnit}">
-						<f:selectItem itemValue="1/cm"
-							itemLabel="1/cm" />
-						<f:selectItem itemValue="1/m"
-							itemLabel="1/m" />
-					</h:selectOneMenu>
-
-					<h:outputText value="Atom State Energy:" />
-					<rich:spacer />
-					<h:outputText value="Range" />
-					<h:inputText value="#{transitions.atomStateEnergyFrom}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomStateEnergy', transitions.atomStateEnergyFrom, transitions.atomStateEnergyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value="" />
-					<h:inputText value="#{transitions.atomStateEnergyTo}"
-						style=" width : 52px;" >
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('atomStateEnergy', transitions.atomStateEnergyFrom, transitions.atomStateEnergyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:selectOneMenu disabled="#{not transitions.editable}"
-						value="#{transitions.atomStateEnergySelectedUnit}">
-						<f:selectItem itemValue="eV"
-							itemLabel="eV" />
-						<f:selectItem itemValue="J"
-							itemLabel="J" />
-						<f:selectItem itemValue="erg"
-							itemLabel="erg" />
-					</h:selectOneMenu>
-
-					<h:outputText value="Molecule State Energy:" />
-					<rich:spacer />
-					<h:outputText value="Range" />
-					<h:inputText value="#{transitions.moleculeStateEnergyFrom}"
-						style=" width : 52px;" >
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeStateEnergy', transitions.moleculeStateEnergyFrom, transitions.moleculeStateEnergyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value=""/>
-					<h:inputText value="#{transitions.moleculeStateEnergyTo}"
-						style=" width : 52px;" >
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeStateEnergy', transitions.moleculeStateEnergyFrom, transitions.moleculeStateEnergyTo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:selectOneMenu disabled="#{not transitions.editable}"
-						value="#{transitions.moleculeStateEnergySelectedUnit}">
-						<f:selectItem itemValue="eV"
-							itemLabel="eV" />
-						<f:selectItem itemValue="J"
-							itemLabel="J" />
-						<f:selectItem itemValue="erg"
-							itemLabel="erg" />
-					</h:selectOneMenu>
-							
-					<h:outputText value="RadTransProbabilityA:"></h:outputText>
-					<rich:spacer />
-					<h:outputText value="Range">
-					</h:outputText>
-					<h:inputText
-						value="#{transitions.radTransProbabilityAFrom}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransProbabilityA', transitions.radTransProbabilityAFrom, transitions.radTransProbabilityATo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value="" />
-					<h:inputText
-						value="#{transitions.radTransProbabilityATo}"
-						style=" width : 52px;" disabled="#{not transitions.editable}">
-						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('radTransProbabilityA', transitions.radTransProbabilityAFrom, transitions.radTransProbabilityATo)}" 
-								reRender="rightPanel"></a4j:support>
-					</h:inputText>
-					<h:outputText value="1/s" />
+				<h:panelGrid columns="3" columnClasses="top, top">
+					<h:outputText value="RadTransWavelength:" style="font-weight:bold"/>
+					<rich:spacer width="5" />
+					<h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="From" />
+							<h:inputText value="#{transitions.radTransWavelengthFrom}"
+								id="radTransWavelengthFrom" style=" width : 182px;"
+								disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransWavelengthFrom, transitions.radTransWavelengthTo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="To" />
+							<h:inputText value="#{transitions.radTransWavelengthTo}" id="radTransWavelengthTo"
+								style=" width :182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransWavelengthFrom, transitions.radTransWavelengthTo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="Units" />
+							<h:selectOneMenu disabled="#{not transitions.editable}"
+								value="#{transitions.radTransWavelengthSelectedUnit}">
+								<f:selectItem itemValue="Å" itemLabel="Å" />
+								<f:selectItem itemValue="nm" itemLabel="nm" />
+								<f:selectItem itemValue="um" itemLabel="um" itemDisabled="true" />
+								<f:selectItem itemValue="mm" itemLabel="mm" />
+								<f:selectItem itemValue="m" itemLabel="m" />
+							</h:selectOneMenu>
+						</h:panelGrid>
 					</h:panelGrid>
-					
-					<h:panelGrid columns="4" columnClasses="top, top">
-					<h:outputText value="RadTransBroadeningDoppler:" />
+
+					<h:outputText value="RadTransFrequency:" style="font-weight:bold"/>
 					<rich:spacer />
-					<rich:spacer width="51"/>
-					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningDoppler}" disabled="#{not transitions.editable}"/>
-					
-					
-					<h:outputText value="RadTransBroadeningInstrument:" />
+					<h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="From" />
+							<h:inputText value="#{transitions.radTransFrequencyFrom}" id="radTransFrequencyFrom"
+								style=" width : 182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransFrequencyFrom, transitions.radTransFrequencyTo)}"
+									reRender="rightPanel"></a4j:support>
+
+								<a4j:support event="onblur"
+									action="#{transitions.frequncyConverterFrom()}"
+									reRender="radTransWavelengthFrom, radTransEnergyFrom, radTransWavenumberFrom"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="To" />
+							<h:inputText value="#{transitions.radTransFrequencyTo}" id="radTransFrequencyTo"
+								style=" width : 182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransFrequencyFrom, transitions.radTransFrequencyTo)}"
+									reRender="rightPanel"></a4j:support>
+									
+									<a4j:support event="onblur"
+									action="#{transitions.frequncyConverterTo()}"
+									reRender="radTransWavelengthTo, radTransEnergyTo, radTransWavenumberTo"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="Units" />
+							<h:selectOneMenu
+								value="#{transitions.radTransFrequencySelectedUnit}"
+								disabled="#{not transitions.editable}">
+								<f:selectItem itemValue="Hz" itemLabel="Hz" />
+								<f:selectItem itemValue="kHz" itemLabel="kHz" />
+								<f:selectItem itemValue="MHz" itemLabel="MHz" />
+								<f:selectItem itemValue="GHz" itemLabel="GHz" />
+								<f:selectItem itemValue="THz" itemLabel="THz" />
+								
+								<a4j:support event="onchange"
+									action="#{transitions.frequencyUnitChange()}"
+									reRender="radTransWavelengthTo, radTransWavenumberTo, radTransEnergyTo, radTransWavelengthFrom, radTransWavenumberFrom, radTransEnergyFrom"></a4j:support>
+							</h:selectOneMenu>
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<h:outputText value="RadTransEnergy:" style="font-weight:bold"/>
 					<rich:spacer />
+					<h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="From" />
+							<h:inputText value="#{transitions.radTransEnergyFrom}"
+								id="radTransEnergyFrom" style=" width : 182px;"
+								disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransEnergyFrom, transitions.radTransEnergyTo)}"
+									reRender="rightPanel"></a4j:support>
+									
+									<a4j:support event="onblur"
+									action="#{transitions.energyConverterFrom()}"
+									reRender="radTransWavelengthFrom, radTransFrequencyFrom, radTransWavenumberFrom"></a4j:support>
+									
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="To" />
+							<h:inputText value="#{transitions.radTransEnergyTo}" id="radTransEnergyTo"
+								style=" width : 182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransEnergyFrom, transitions.radTransEnergyTo)}"
+									reRender="rightPanel"></a4j:support>
+									
+									<a4j:support event="onblur"
+									action="#{transitions.energyConverterTo()}"
+									reRender="radTransWavelengthTo, radTransFrequencyTo, radTransWavenumberTo"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="Units" />
+							<h:selectOneMenu disabled="#{not transitions.editable}"
+								value="#{transitions.radTransEnergySelectedUnit}">
+								<f:selectItem itemValue="eV" itemLabel="eV" />
+								<f:selectItem itemValue="J" itemLabel="J" />
+								<f:selectItem itemValue="erg" itemLabel="erg" />
+								
+								<a4j:support event="onchange"
+									action="#{transitions.energyUnitChange()}"
+									reRender="radTransWavelengthTo, radTransFrequencyTo, radTransWavenumberTo, radTransWavelengthFrom, radTransFrequencyFrom, radTransWavenumberFrom"></a4j:support>
+							</h:selectOneMenu>
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<h:outputText value="RadTransWavenumber:" style="font-weight:bold"/>
 					<rich:spacer />
-					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningInstrument}" disabled="#{not transitions.editable}"/>
-					
-						
-					<h:outputText value="RadTransBroadeningNatural:" />
+					<h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="From" />
+							<h:inputText value="#{transitions.radTransWavenumberFrom}"
+								id="radTransWavenumberFrom" style=" width : 182px;"
+								disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransWavenumberFrom, transitions.radTransWavenumberTo)}"
+									reRender="rightPanel"></a4j:support>
+									
+								<a4j:support event="onblur"
+									action="#{transitions.wavenumberConverterFrom()}"
+									reRender="radTransWavelengthFrom, radTransEnergyFrom, radTransFrequencyFrom"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="To" />
+							<h:inputText value="#{transitions.radTransWavenumberTo}" id="radTransWavenumberTo"
+								style=" width : 182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransWavelength', transitions.radTransWavenumberFrom, transitions.radTransWavenumberTo)}"
+									reRender="rightPanel"></a4j:support>
+									
+								<a4j:support event="onblur"
+									action="#{transitions.wavenumberConverterTo()}"
+									reRender="radTransWavelengthTo, radTransEnergyTo, radTransFrequencyTo"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="Units" />
+							<h:selectOneMenu disabled="#{not transitions.editable}"
+								value="#{transitions.radTransWavenumberSelectedUnit}">
+								<f:selectItem itemValue="1/cm" itemLabel="1/cm" />
+								<f:selectItem itemValue="1/m" itemLabel="1/m" />
+								
+								<a4j:support event="onchange"
+									action="#{transitions.wavenumberUnitChange()}"
+									reRender="radTransWavelengthTo, radTransFrequencyTo, radTransEnergyTo, radTransWavelengthFrom, radTransFrequencyFrom, radTransEnergyFrom"></a4j:support>
+							</h:selectOneMenu>
+						</h:panelGrid>
+					</h:panelGrid>
+
+
+					<h:outputText value="Atom State Energy:" style="font-weight:bold"/>
 					<rich:spacer />
+					<h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="From" />
+							<h:inputText value="#{transitions.atomStateEnergyFrom}"
+								style=" width : 182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('atomStateEnergy', transitions.atomStateEnergyFrom, transitions.atomStateEnergyTo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="To" />
+							<h:inputText value="#{transitions.atomStateEnergyTo}"
+								style=" width : 182px;">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('atomStateEnergy', transitions.atomStateEnergyFrom, transitions.atomStateEnergyTo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="Units" />
+							<h:selectOneMenu disabled="#{not transitions.editable}"
+								value="#{transitions.atomStateEnergySelectedUnit}">
+								<f:selectItem itemValue="eV" itemLabel="eV" />
+								<f:selectItem itemValue="J" itemLabel="J" />
+								<f:selectItem itemValue="erg" itemLabel="erg" />
+							</h:selectOneMenu>
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<h:outputText value="Molecule State Energy:" style="font-weight:bold"/>
 					<rich:spacer />
-					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningNatural}" disabled="#{not transitions.editable}"/>
-					
-						
-					<h:outputText value="RadTransBroadeningPressure:" />
+					<h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="From" />
+							<h:inputText value="#{transitions.moleculeStateEnergyFrom}"
+								style=" width : 182px;">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('moleculeStateEnergy', transitions.moleculeStateEnergyFrom, transitions.moleculeStateEnergyTo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="To" />
+							<h:inputText value="#{transitions.moleculeStateEnergyTo}"
+								style=" width : 182px;">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('moleculeStateEnergy', transitions.moleculeStateEnergyFrom, transitions.moleculeStateEnergyTo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="Units" />
+							<h:selectOneMenu disabled="#{not transitions.editable}"
+								value="#{transitions.moleculeStateEnergySelectedUnit}">
+								<f:selectItem itemValue="eV" itemLabel="eV" />
+								<f:selectItem itemValue="J" itemLabel="J" />
+								<f:selectItem itemValue="erg" itemLabel="erg" />
+							</h:selectOneMenu>
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<h:outputText value="RadTransProbabilityA:" style="font-weight:bold"/>
 					<rich:spacer />
-					<rich:spacer />
-					<h:selectBooleanCheckbox
-						value="#{transitions.radTransBroadeningPressure}" disabled="#{not transitions.editable}"/>
-					
+					<h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="From" />
+							<h:inputText value="#{transitions.radTransProbabilityAFrom}"
+								style=" width : 182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransProbabilityA', transitions.radTransProbabilityAFrom, transitions.radTransProbabilityATo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="To" />
+							<h:inputText value="#{transitions.radTransProbabilityATo}"
+								style=" width : 182px;" disabled="#{not transitions.editable}">
+								<a4j:support event="onkeyup"
+									action="#{selectedRestrictables.keyEventOnBlur('radTransProbabilityA', transitions.radTransProbabilityAFrom, transitions.radTransProbabilityATo)}"
+									reRender="rightPanel"></a4j:support>
+							</h:inputText>
+						</h:panelGrid>
+						<h:panelGrid columns="2" style="float: right">
+							<h:outputText value="Units" />
+							<h:outputText value="1/s" />
+						</h:panelGrid>
+					</h:panelGrid>
 				</h:panelGrid>
-				
+
+				<h:panelGrid columns="4" columnClasses="top, top">
+					<h:outputText value="RadTransBroadeningDoppler:" style="font-weight:bold"/>
+					<rich:spacer />
+					<rich:spacer width="51" />
+					<h:selectBooleanCheckbox
+						value="#{transitions.radTransBroadeningDoppler}"
+						disabled="#{not transitions.editable}" />
+
+
+					<h:outputText value="RadTransBroadeningInstrument:" style="font-weight:bold"/>
+					<rich:spacer />
+					<rich:spacer />
+					<h:selectBooleanCheckbox
+						value="#{transitions.radTransBroadeningInstrument}"
+						disabled="#{not transitions.editable}" />
+
+
+					<h:outputText value="RadTransBroadeningNatural:" style="font-weight:bold"/>
+					<rich:spacer />
+					<rich:spacer />
+					<h:selectBooleanCheckbox
+						value="#{transitions.radTransBroadeningNatural}"
+						disabled="#{not transitions.editable}" />
+
+
+					<h:outputText value="RadTransBroadeningPressure:" style="font-weight:bold"/>
+					<rich:spacer />
+					<rich:spacer />
+					<h:selectBooleanCheckbox
+						value="#{transitions.radTransBroadeningPressure}"
+						disabled="#{not transitions.editable}" />
+
+				</h:panelGrid>
+
 			</h:panelGrid>
 
 		</rich:panel>

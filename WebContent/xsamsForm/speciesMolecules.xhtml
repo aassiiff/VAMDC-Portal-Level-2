@@ -17,7 +17,7 @@
 			width: 150px;
 		}
 		.inputTextClass {
-			 background-color:pink;
+			 background-color:#CCCCFF;
 			font-size:08px
 		}
 	</style>
@@ -43,9 +43,18 @@
 					<h:inputText id="moleculeChemicalName"
 						value="#{speciesMolecules.moleculeChemicalName}" style=" width : 265px;" disabled="#{not speciesMolecules.moleculeChemicalNameBoolean}" 
 						styleClass="#{not speciesMolecules.moleculeChemicalNameBoolean ? 'inputTextClass' : 'color:pink'}">
-						
+						<rich:suggestionbox for="moleculeChemicalName" var="result" suggestionAction="#{speciesMolecules.getMoleculeNameQueryWildcard}" width="280" border="0">
+			                <h:column style=" width : 253px;">			
+			                	<h:outputText value="#{result.molecName}" style=" width : 253px;"/>			
+			                </h:column>
+			                <!-- -->
+			                <a4j:support event="onselect" action="#{speciesMolecules.getMoleculeNameQuery}" 
+								reRender="moleculesDBQueryPanel"/>				                 
+	                	</rich:suggestionbox>
+					<!--  -->		
 						<a4j:support event="onblur" action="#{speciesMolecules.disableIndividualFieldsOnBlur('moleculeChemicalName')}" 
-								reRender="moleculeStoichiometricFormula, moleculeInchiKey, moleculeInchi, moleculesDBQueryPanel"></a4j:support>
+								reRender="moleculeStoichiometricFormula, moleculeInchiKey, moleculeInchi"></a4j:support>
+					
 								
 						<a4j:support event="onfocus" action="#{speciesMolecules.disableIndividualFieldsOnFocus('moleculeChemicalName')}" 
 								reRender="moleculeStoichiometricFormula, moleculeInchiKey, moleculeInchi"></a4j:support>
@@ -99,9 +108,11 @@
 						styleClass="#{not speciesMolecules.moleculeInchiBoolean ? 'inputTextClass' : 'color:pink'}">
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeInchi', speciesMolecules.moleculeInchi, '')}" 
 								reRender="rightPanel"></a4j:support>
-						<a4j:support event="onblur" action="#{speciesMolecules.getImageFromInchiFunction}" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
+						<a4j:support event="onblur" action="#{speciesMolecules.disableIndividualFieldsOnBlur('moleculeInchi')}" 
+							reRender="moleculeChemicalName, moleculeInchiKey, moleculeStoichiometricFormula, moleculesDBQueryPanel"></a4j:support>
+							
 						<a4j:support event="onfocus" action="#{speciesMolecules.disableIndividualFieldsOnFocus('moleculeInchi')}" 
-								reRender="moleculeOrdinaryStructuralFormula"></a4j:support>
+								reRender="moleculeChemicalName, moleculeInchiKey, moleculeStoichiometricFormula, moleculesDBQueryPanel"></a4j:support>
 					</h:inputTextarea>
 
 					<h:outputText value="InChI Key:" />
@@ -112,9 +123,10 @@
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeInchiKey', speciesMolecules.moleculeInchiKey, '')}" 
 								reRender="rightPanel"></a4j:support>
 								<!-- -->
-						<a4j:support event="onblur" reRender="imageFromChemicalName, speciesMoleculesPanel"></a4j:support>
+						<a4j:support event="onblur" action="#{speciesMolecules.disableIndividualFieldsOnBlur('moleculeInchiKey')}" 
+							reRender="moleculeChemicalName, moleculeInchi, moleculeStoichiometricFormula, moleculesDBQueryPanel"></a4j:support>
 						<a4j:support event="onfocus" action="#{speciesMolecules.disableIndividualFieldsOnFocus('moleculeInchiKey')}" 
-								reRender="moleculeOrdinaryStructuralFormula"></a4j:support>						
+								reRender="moleculeChemicalName, moleculeInchi, moleculeStoichiometricFormula, moleculesDBQueryPanel"></a4j:support>	
 					</h:inputText>					
 				</h:panelGrid>
 			</h:panelGrid>

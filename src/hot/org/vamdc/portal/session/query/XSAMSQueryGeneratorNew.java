@@ -16,6 +16,8 @@ import org.jboss.seam.annotations.Logger;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.log.Log;
+import org.vamdc.portal.session.controller.ProcessCodeManager;
+import org.vamdc.portal.session.controller.ProcessCodeManagerThread;
 import org.vamdc.portal.session.controller.QueryLog;
 import org.vamdc.portal.session.controller.RegistryBrowser;
 import org.vamdc.portal.session.controller.RegistryBrowserQueryThread;
@@ -37,6 +39,9 @@ public class XSAMSQueryGeneratorNew {
 
 	@In(create = true)
 	private RegistryBrowser registryBrowser;
+	
+	@In(create = true)
+	private ProcessCodeManager processCodeManager;
 	
 	@In(create = true)
 	private QueryLog queryLog;
@@ -173,6 +178,7 @@ public class XSAMSQueryGeneratorNew {
 	}
 
 	private boolean registryBrowserQuery = true;
+	private boolean processCodeManagerQuery = true;
 
 	public void populateExtendedRegistryList() {
 
@@ -183,6 +189,14 @@ public class XSAMSQueryGeneratorNew {
 			Thread thread = new Thread(registryBrowserQueryThread);
 			thread.start();
 			registryBrowserQuery = false;
+		}
+		if(processCodeManagerQuery == true){
+			processCodeManager.setProcessSpreadSheet(registryBrowser.getProcessSpreadSheet());
+			ProcessCodeManagerThread processCodeManagerThread= new ProcessCodeManagerThread(processCodeManager);
+			
+			Thread thread = new Thread(processCodeManagerThread);
+			thread.start();
+			processCodeManagerQuery = false;
 		}
 	}
 
@@ -225,7 +239,7 @@ public class XSAMSQueryGeneratorNew {
 		clearForm();
 	}
 
-	public void executeQueryStage1() {
+	public boolean executeQueryStage1() {
 		log.info("XSAMSQueryNew.executeQuery() action called:  "
 				+ this.atomsForm + " " + this.moleculesForm + " " + this.transitionsForm + " " + this.collisionsForm);
 
@@ -254,7 +268,14 @@ public class XSAMSQueryGeneratorNew {
 			}
 			queryString = queryString + collisions.getQueryString();
 		}
-		submitHeadRequest();
+		
+		//System.out.println("Query String :" + queryString + " " + queryString.trim().contains("==") + " " + queryString.trim().contains(">"));
+		if(queryString.trim().contains("=") || queryString.trim().contains(">=") || queryString.trim().contains("<=")){
+			submitHeadRequest();
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public void executeQueryStage1FreeForm() {
@@ -435,6 +456,9 @@ public class XSAMSQueryGeneratorNew {
 		speciesAtoms.toggleEditable();
 		speciesMolecules.toggleEditable();
 		
+		/*
+		 * It is Hack due to check box in the Data Table
+		 */
 		speciesMolecules.emptySelectedIsotopesFromCheckBox2();
 		transitions.toggleEditable();
 		collisions.toggleEditable();

@@ -76,8 +76,7 @@ public class SpeciesMolecules {
 
 	private List<Isotopologues> isotopologuesList = new ArrayList<Isotopologues>();
 
-	private List<String> selectedIsotopesFromCheckBox;// = new
-														// ArrayList<String>();
+	private List<String> selectedIsotopesFromCheckBox = new ArrayList<String>();
 	private List<String> selectedIsotopesFromCheckBox2 = new ArrayList<String>();
 
 	public void toggleEditable() {
@@ -93,6 +92,12 @@ public class SpeciesMolecules {
 		moleculeIonChargeTo = "";
 		moleculeProtonationFrom = "";
 		moleculeProtonationTo = "";
+
+		moleculeChemicalNameBoolean = true;
+		moleculeInchiBoolean = true;
+		moleculeInchiKeyBoolean = true;
+		moleculeOrdinaryStructuralFormulaBoolean = true;
+
 		imageFromChemicalName = fixedURlForImage + "false.jpeg";
 
 		isotopologuesList = new ArrayList<Isotopologues>();
@@ -237,12 +242,12 @@ public class SpeciesMolecules {
 			// Created another check box to overcome this issue.
 			/**/
 			if (!this.selectedIsotopesFromCheckBox2
-					.contains(selectedIsotopesFromCheckBox)) {
+					.contains(selectedIsotopesFromCheckBox.get(0))) {
 				this.selectedIsotopesFromCheckBox2
 						.add(selectedIsotopesFromCheckBox.get(0));
 			}
 		}
-		
+
 		this.selectedIsotopesFromCheckBox = selectedIsotopesFromCheckBox2;
 	}
 
@@ -275,25 +280,44 @@ public class SpeciesMolecules {
 
 		if (moleculeChemicalName != null
 				&& moleculeChemicalName.trim().length() > 0) {
-			if (firstEntry != true) {
-				xsamsQuery = xsamsQuery + " AND ";
+			if (isotopologuesList.size() == 0) {
+				if (firstEntry != true) {
+					xsamsQuery = xsamsQuery + " AND ";
+				} else {
+					firstEntry = false;
+				}
+				xsamsQuery = xsamsQuery + " MoleculeChemicalName = '"
+						+ moleculeChemicalName + "'";
+
 			} else {
-				firstEntry = false;
+				for (int i = 0; i < selectedIsotopesFromCheckBox2.size(); i++) {
+					if (i > 0)
+						xsamsQuery = xsamsQuery + " OR ";
+					xsamsQuery = xsamsQuery + " MoleculeInchiKey='"
+							+ selectedIsotopesFromCheckBox2.get(i) + "'";
+				}
 			}
-			xsamsQuery = xsamsQuery + " MoleculeChemicalName = '"
-					+ moleculeChemicalName + "'";
 
 		}
 
 		if (moleculeStoichiometricFormula != null
 				&& moleculeStoichiometricFormula.trim().length() > 0) {
-			if (firstEntry != true) {
-				xsamsQuery = xsamsQuery + " AND ";
+			if (isotopologuesList.size() == 0) {
+				if (firstEntry != true) {
+					xsamsQuery = xsamsQuery + " AND ";
+				} else {
+					firstEntry = false;
+				}
+				xsamsQuery = xsamsQuery + " MoleculeStoichiometricFormula = '"
+						+ moleculeStoichiometricFormula + "'";
 			} else {
-				firstEntry = false;
+				for (int i = 0; i < selectedIsotopesFromCheckBox2.size(); i++) {
+					if (i > 0)
+						xsamsQuery = xsamsQuery + " OR ";
+					xsamsQuery = xsamsQuery + " MoleculeInchiKey='"
+							+ selectedIsotopesFromCheckBox2.get(i) + "'";
+				}
 			}
-			xsamsQuery = xsamsQuery + " MoleculeStoichiometricFormula = '"
-					+ moleculeStoichiometricFormula + "'";
 		}
 
 		if (moleculeInchiKey != null && moleculeInchiKey.trim().length() > 0) {
@@ -307,11 +331,12 @@ public class SpeciesMolecules {
 			xsamsQuery = xsamsQuery + " MoleculeInchiKey='" + moleculeInchiKey
 					+ "'";
 		} else {
-			for (int i = 0; i < selectedIsotopesFromCheckBox2.size(); i++) {
-				xsamsQuery = xsamsQuery + " OR ";
-				xsamsQuery = xsamsQuery + " MoleculeInchiKey='"
-						+ selectedIsotopesFromCheckBox2.get(i) + "'";
-			}
+			/*
+			 * for (int i = 0; i < selectedIsotopesFromCheckBox2.size(); i++) {
+			 * xsamsQuery = xsamsQuery + " OR "; xsamsQuery = xsamsQuery +
+			 * " MoleculeInchiKey='" + selectedIsotopesFromCheckBox2.get(i) +
+			 * "'"; }
+			 */
 		}
 
 		if (moleculeInchi != null && moleculeInchi.trim().length() > 0) {
@@ -327,17 +352,18 @@ public class SpeciesMolecules {
 
 		selectedIsotopesFromCheckBox = selectedIsotopesFromCheckBox2;
 		selectedIsotopesFromCheckBox2 = new ArrayList<String>();
-		//System.out.println(xsamsQuery);
-		//selectedIsotopesFromCheckBox.add("AfterPreview");
+		// System.out.println(xsamsQuery);
+		// selectedIsotopesFromCheckBox.add("AfterPreview");
 		return xsamsQuery;
 	}
 
 	/*
 	 * It is Hack only to clear the check Box after Refine Query is clicked.
 	 */
-	public void emptySelectedIsotopesFromCheckBox2(){
+	public void emptySelectedIsotopesFromCheckBox2() {
 		selectedIsotopesFromCheckBox2 = new ArrayList<String>();
 	}
+
 	public void getInChI(String value) {
 		System.out.println("getInChIFromChemcialName()");
 		String urlString = "http://cactus.nci.nih.gov/chemical/structure/";
@@ -570,7 +596,7 @@ public class SpeciesMolecules {
 		System.out.println("getMoleculeNameQuery");
 		if (moleculeChemicalName != null
 				&& moleculeChemicalName.trim().length() > 0) {
-			//moleculeOrdinaryStructuralFormulaBoolean = false;
+			// moleculeOrdinaryStructuralFormulaBoolean = false;
 			selectedIsotopesFromCheckBox = new ArrayList<String>();
 			selectedIsotopesFromCheckBox2 = new ArrayList<String>();
 			isotopologuesList = new ArrayList<Isotopologues>();
@@ -583,15 +609,23 @@ public class SpeciesMolecules {
 						.findByMolecName(moleculeNamesList.get(0).getMolecId());
 				if (isotopologuesList.size() > 0) {
 					for (int i = 0; i < isotopologuesList.size(); i++) {
-						// selectedIsotopesFromCheckBox.add(isotopologuesList.get(i).getInChIkey());
+						//selectedIsotopesFromCheckBox.add(isotopologuesList.get(i).getInChIkey());
 					}
 					System.out.println(isotopologuesList.size() + "  "
 							+ isotopologuesList.get(0).getInChIkey());
 				}
 			}
 		} else {
-			//moleculeOrdinaryStructuralFormulaBoolean = true;
+			// moleculeOrdinaryStructuralFormulaBoolean = true;
 		}
+	}
+
+	public List<MoleculeNames> getMoleculeNameQueryWildcard(Object suggest) {
+		String pref = (String) suggest;
+		List<MoleculeNames> moleculeNamesList = new MoleculeNamesHome()
+				.findByMolecNameWildcard(pref);
+		return moleculeNamesList;
+
 	}
 
 	public void getStoichiometricFormulaQuery() {
@@ -620,32 +654,32 @@ public class SpeciesMolecules {
 	public void disableIndividualFieldsOnFocus(String fieldName) {
 		System.out.println("disableIndividualFieldsOnFocus");
 		if (fieldName.equalsIgnoreCase("moleculeChemicalName")) {
-			
+
 			moleculeOrdinaryStructuralFormulaBoolean = false;
-			//moleculeOrdinaryStructuralFormula = "disabled";
-			
+			// moleculeOrdinaryStructuralFormula = "disabled";
+
 			moleculeInchiKeyBoolean = false;
-			//moleculeInchiKey = "disabled";
-			
-			moleculeInchiBoolean = false;	
-			//moleculeInchi = "disabled";
-			
-		} else if(fieldName.equalsIgnoreCase("moleculeStoichiometricFormula")){			
+			// moleculeInchiKey = "disabled";
+
+			moleculeInchiBoolean = false;
+			// moleculeInchi = "disabled";
+
+		} else if (fieldName.equalsIgnoreCase("moleculeStoichiometricFormula")) {
 			moleculeChemicalNameBoolean = false;
 			moleculeInchiKeyBoolean = false;
-			moleculeInchiBoolean = false;	
-			
-		} else if(fieldName.equalsIgnoreCase("moleculeInchi")){
+			moleculeInchiBoolean = false;
+
+		} else if (fieldName.equalsIgnoreCase("moleculeInchi")) {
 			moleculeOrdinaryStructuralFormulaBoolean = false;
 			moleculeChemicalNameBoolean = false;
-			moleculeInchiKeyBoolean = false;			
-		} else if(fieldName.equalsIgnoreCase("moleculeInchiKey")){
+			moleculeInchiKeyBoolean = false;
+		} else if (fieldName.equalsIgnoreCase("moleculeInchiKey")) {
 			moleculeOrdinaryStructuralFormulaBoolean = false;
 			moleculeChemicalNameBoolean = false;
-			moleculeInchiBoolean = false;	
+			moleculeInchiBoolean = false;
 		}
 	}
-	
+
 	public void disableIndividualFieldsOnBlur(String fieldName) {
 		System.out.println("disableIndividualFieldsOnBlur");
 		if (fieldName.equalsIgnoreCase("moleculeChemicalName")) {
@@ -658,18 +692,18 @@ public class SpeciesMolecules {
 			} else {
 				this.moleculeStoichiometricFormula = "";
 				moleculeOrdinaryStructuralFormulaBoolean = true;
-				
+
 				moleculeInchiKey = "";
 				moleculeInchiKeyBoolean = true;
-				
+
 				moleculeInchi = "";
 				moleculeInchiBoolean = true;
-				
+
 				selectedIsotopesFromCheckBox = new ArrayList<String>();
 				selectedIsotopesFromCheckBox2 = new ArrayList<String>();
 				isotopologuesList = new ArrayList<Isotopologues>();
 			}
-		} else if(fieldName.equalsIgnoreCase("moleculeStoichiometricFormula")){		
+		} else if (fieldName.equalsIgnoreCase("moleculeStoichiometricFormula")) {
 			if (moleculeStoichiometricFormula != null
 					&& moleculeStoichiometricFormula.trim().length() > 0) {
 				getStoichiometricFormulaQuery();
@@ -677,31 +711,56 @@ public class SpeciesMolecules {
 				moleculeChemicalNameBoolean = true;
 				moleculeInchiKeyBoolean = true;
 				moleculeInchiBoolean = true;
-				
+
 				selectedIsotopesFromCheckBox = new ArrayList<String>();
 				selectedIsotopesFromCheckBox2 = new ArrayList<String>();
 				isotopologuesList = new ArrayList<Isotopologues>();
 			}
-			
-		} else if(fieldName.equalsIgnoreCase("moleculeInchi")){
-			if (moleculeInchi != null
-					&& moleculeInchi.trim().length() > 0) {
-				
+
+		} else if (fieldName.equalsIgnoreCase("moleculeInchi")) {
+			if (moleculeInchi != null && moleculeInchi.trim().length() > 0) {
+
 			} else {
 				moleculeChemicalNameBoolean = true;
 				moleculeInchiKeyBoolean = true;
 				moleculeOrdinaryStructuralFormulaBoolean = true;
 			}
-			
-		} else if(fieldName.equalsIgnoreCase("moleculeInchiKey")){
+
+		} else if (fieldName.equalsIgnoreCase("moleculeInchiKey")) {
 			if (moleculeInchiKey != null
 					&& moleculeInchiKey.trim().length() > 0) {
-				
+
 			} else {
 				moleculeChemicalNameBoolean = true;
 				moleculeInchiBoolean = true;
 				moleculeOrdinaryStructuralFormulaBoolean = true;
-			}			
+			}
 		}
+	}
+	
+	private boolean selectAllBoolean = true;
+	
+	
+	public boolean isSelectAllBoolean() {
+		return selectAllBoolean;
+	}
+
+	public void setSelectAllBoolean(boolean selectAllBoolean) {
+		this.selectAllBoolean = selectAllBoolean;
+	}
+
+	public void selectAllAction(){
+		selectedIsotopesFromCheckBox = new ArrayList<String>();
+		selectedIsotopesFromCheckBox2 = new ArrayList<String>();
+		for (int i = 0; i < isotopologuesList.size(); i++) {
+			selectedIsotopesFromCheckBox.add(isotopologuesList.get(i).getInChIkey());
+		}
+		selectAllBoolean = false;
+	}
+	
+	public void deSelectAllAction(){
+		selectedIsotopesFromCheckBox = new ArrayList<String>();
+		selectedIsotopesFromCheckBox2 = new ArrayList<String>();		
+		selectAllBoolean = true;
 	}
 }

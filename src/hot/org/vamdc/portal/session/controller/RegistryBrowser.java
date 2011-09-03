@@ -44,6 +44,7 @@ public class RegistryBrowser {
 
 	private String fileServerURL;
 	private String staticApplicationURL;
+	private String processSpreadSheet;
 
 	private int capabilityIndex = 0;
 	private int interfaceIndex = 0;
@@ -115,6 +116,7 @@ public class RegistryBrowser {
 		String queryString = System.getProperty("queryString_0");
 		fileServerURL = System.getProperty("fileServerURL");
 		staticApplicationURL = System.getProperty("staticApplicationURL");
+		processSpreadSheet = System.getProperty("processSpreadSheet");
 
 		log.info("registryBrowser.registryBrowser() System.getProperty(registryURL): "
 						+ registryURL);
@@ -122,6 +124,8 @@ public class RegistryBrowser {
 						+ queryString);
 		log.info("registryBrowser.registryBrowser() System.getProperty(fileServerURL): "
 						+ fileServerURL);
+		log.info("registryBrowser.registryBrowser() System.getProperty(processSpreadSheet): "
+				+ processSpreadSheet);
 
 		try {
 			RegistryService registryTemp = RegistryDelegateFactory
@@ -307,10 +311,10 @@ public class RegistryBrowser {
 								.contains("VAMDC-TAP") || capabilityTemp.getStandardID().toUpperCase()
 								.contains("TAP-XSAMS") ) {
 							accessURLs[1] = buildInterfaceList(capabilityTemp);
-							log.info(capabilityTemp.getStandardID().toUpperCase());
+							//log.info(capabilityTemp.getStandardID().toUpperCase());
 						} else {
 							accessURLs[0] = buildInterfaceList(capabilityTemp);
-							log.info("Else {0}", capabilityTemp.getStandardID().toUpperCase());
+							//log.info("Else {0}", capabilityTemp.getStandardID().toUpperCase());
 						}
 					}
 				}
@@ -602,4 +606,13 @@ public class RegistryBrowser {
 	public void setStaticApplicationURL(String staticApplicationURL) {
 		this.staticApplicationURL = staticApplicationURL;
 	}
+
+	public String getProcessSpreadSheet() {
+		return processSpreadSheet;
+	}
+
+	public void setProcessSpreadSheet(String processSpreadSheet) {
+		this.processSpreadSheet = processSpreadSheet;
+	}
+	
 }

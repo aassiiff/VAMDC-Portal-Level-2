@@ -18,6 +18,7 @@ import org.hibernate.validator.Length;
     @NamedQuery(name = "MoleculeNames.findAll", query = "SELECT m FROM MoleculeNames m"),
     @NamedQuery(name = "MoleculeNames.findById", query = "SELECT m FROM MoleculeNames m WHERE m.id = :id"),
     @NamedQuery(name = "MoleculeNames.findByMolecName", query = "SELECT m FROM MoleculeNames m WHERE m.molecName = :molecName"),
+    @NamedQuery(name = "MoleculeNames.findByMolecNameWildcard", query = "SELECT m FROM MoleculeNames m WHERE m.molecName LIKE :molecName"),
     @NamedQuery(name = "MoleculeNames.findByInChIKeyStem", query = "SELECT m FROM MoleculeNames m WHERE m.inChIkeyStem = :inChIkeyStem"),
     @NamedQuery(name = "MoleculeNames.findByMolecID", query = "SELECT m FROM MoleculeNames m WHERE m.molecId = :molecId")})
 public class MoleculeNames implements java.io.Serializable {
