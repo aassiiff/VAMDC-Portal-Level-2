@@ -24,51 +24,51 @@
             </f:facet>
             
             <a4j:form ajaxSubmit="true">
-	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Atoms"
-	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">                
-	                <rich:menuItem value="Atoms" reRender="formPanel1, formPanel4, mainOptionPanel, formButtonsPanel" 
-	                action="#{navigator.subOptionSpeciesAtoms}" rendered="#{!navigator.stage1Display}"/>
-	            </rich:dropDownMenu>
+	                           
+	                <a4j:commandButton value="Atoms" reRender="formPanel1, formPanel4, mainOptionPanel, formButtonsPanel" 
+	                action="#{navigator.subOptionSpeciesAtoms}" disabled="#{navigator.stage1Display}" 
+	                style=" width : 75px; height: 35px; background-color:#CCCCFF; font-size:10pt; color:black"/>
+	            
             </a4j:form>
             
             <rich:spacer height="10"/>
             
             <a4j:form ajaxSubmit="true">
-	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Molecules"
-	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">                
-	                <rich:menuItem value="Molecules" reRender="formPanel1A, formPanel4, mainOptionPanel, formButtonsPanel" 
-	                action="#{navigator.subOptionSpeciesMolecules}" rendered="#{!navigator.stage1Display}"/>
-	            </rich:dropDownMenu>
+	                            
+	                <a4j:commandButton value="Molecules" reRender="formPanel1A, formPanel4, mainOptionPanel, formButtonsPanel" 
+	                action="#{navigator.subOptionSpeciesMolecules}" disabled="#{navigator.stage1Display}" 
+	                style=" width : 75px; height: 35px; background-color:#CCCCFF; font-size:10pt; color:black"/>
+	            
             </a4j:form>
             
             <rich:spacer height="10"/>
             
             <a4j:form ajaxSubmit="true">
-	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Transitions"
-	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">
-	                <rich:menuItem value="Transitions" reRender="formPanel2, formPanel4, formButtonsPanel" 
-	                action="#{navigator.subOptionTransitions}" rendered="#{!navigator.stage1Display}"/>
-	            </rich:dropDownMenu>
+	            
+	                <a4j:commandButton value="Transitions" reRender="formPanel2, formPanel4, formButtonsPanel" 
+	                action="#{navigator.subOptionTransitions}" disabled="#{navigator.stage1Display}" 
+	                style=" width : 75px; height: 35px; background-color:#CCCCFF; font-size:10pt; color:black"/>
+	           
             </a4j:form>
             
             <rich:spacer height="10"/>
             
             <a4j:form ajaxSubmit="true">
-	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Collisions"
-	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">                
-	                <rich:menuItem value="Collisions" reRender="formPanel3, formPanel4, mainOptionPanel, formButtonsPanel" 
-	               	action="#{navigator.subOptionCollisions}" rendered="#{!navigator.stage1Display}"/> 
-	            </rich:dropDownMenu>
+	                           
+	                <a4j:commandButton value="Collisions" reRender="formPanel3, formPanel4, mainOptionPanel, formButtonsPanel" 
+	               	action="#{navigator.subOptionCollisions}" disabled="#{navigator.stage1Display}" 
+	               	style=" width : 75px; height: 35px; background-color:#CCCCFF; font-size:10pt; color:black"/> 
+	            
             </a4j:form>
             
             <rich:spacer height="10"/> 
             
             <a4j:form ajaxSubmit="true">
-	            <rich:dropDownMenu style="background-color:#B5DAFF" value="Free Form"
-	                        submitMode="ajax" direction="bottom-right"  jointPoint="tr">
-	                <rich:menuItem value="Free Form" reRender="formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, mainOptionPanel, formButtonsPanel" 
-	                	action="#{navigator.subOptionFreeForm}" rendered="#{!navigator.stage1Display}"/>              
-	            </rich:dropDownMenu>
+	            
+	                <a4j:commandButton value="Free Form" reRender="formPanel1, formPanel1A, formPanel2, formPanel3, formPanel4, mainOptionPanel, formButtonsPanel" 
+	                	action="#{navigator.subOptionFreeForm}" disabled="#{navigator.stage1Display}" 
+	                	style=" width:75px; height: 35px; background-color:#CCCCFF; font-size:10pt; color:black"/>              
+	            
             </a4j:form>
                      
         </rich:panel>

@@ -56,5 +56,13 @@ public class MoleculesHome extends EntityHome<Molecules> {
 		List<Molecules> stoichiometricFormulaList = query.getResultList();
 		return stoichiometricFormulaList;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Molecules> findByStoichiometricFormulaWildcard(String stoichiometricFormula){
+		Query query = this.getEntityManager().createNamedQuery("Molecules.findByStoichiometricFormulaWildcard");
+		query.setParameter("stoichiometricFormula", stoichiometricFormula + "%");
+		List<Molecules> stoichiometricFormulaList = query.getResultList();
+		return stoichiometricFormulaList;
+	}
 
 }

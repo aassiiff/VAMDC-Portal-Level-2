@@ -290,16 +290,20 @@ public class Navigator {
 
 	public void executeQueryStage2() {
 		xsamsQueryNew.executeQueryStage2();
-		mainOptionPanel = "/xsamsForm/empty.xhtml";
-		formPanel1 = "/xsamsForm/submittedXSAMSQueries.xhtml";
+		xsamsQueryNew.toggleEditable();
+		this.stage1Display = false;
+		selectedRestrictables.resetSelectedRestrictablesList();
+		//mainOptionPanel = "/xsamsForm/empty.xhtml";
+		//formPanel1 = "/submittedQueries.xhtml";
+		formPanel1 = "/xsamsForm/empty.xhtml";
 		formPanel1A = "/xsamsForm/emptyWithWidth.xhtml";
 		formPanel2 = "/xsamsForm/emptyWithWidth.xhtml";
 		formPanel3 = "/xsamsForm/emptyWithWidth.xhtml";
 		formPanel4 = "/xsamsForm/emptyWithWidth.xhtml";
+		rightPanel = "/xsamsForm/restrictableTable.xhtml";
 		formButtonsPanel = "/xsamsForm/emptyWithWidth.xhtml";
-		this.rightPanel = "/xsamsForm/emptyWithWidthHeight.xhtml";
 		try {
-			Thread.sleep(100);
+			//Thread.sleep(100);
 			new Thread() {
 				public void run() {
 					resetQueryBuilder();

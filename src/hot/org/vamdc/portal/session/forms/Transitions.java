@@ -59,6 +59,9 @@ public class Transitions {
 	private double speedOfLightInCM = 29979245800d;
 	private double planksConstantIneVs = 4.135667E-15d;
 
+	private boolean atomForm = false;
+	private boolean moleculeForm = false;
+
 	public void toggleEditable() {
 		editable = !editable;
 	}
@@ -127,105 +130,84 @@ public class Transitions {
 									radTransWavelengthSelectedUnit,
 									"WAVELENGTH"), "RadTransWavelength");
 		}
-/*
-		if ((radTransFrequencyFrom != null && radTransFrequencyFrom.trim()
-				.length() > 0)
-				|| (radTransFrequencyTo != null && radTransFrequencyTo.trim()
-						.length() > 0)) {
-			if (firstEntry != true) {
-				xsamsQuery = xsamsQuery + " AND ";
-			} else {
-				firstEntry = false;
+		/*
+		 * if ((radTransFrequencyFrom != null && radTransFrequencyFrom.trim()
+		 * .length() > 0) || (radTransFrequencyTo != null &&
+		 * radTransFrequencyTo.trim() .length() > 0)) { if (firstEntry != true)
+		 * { xsamsQuery = xsamsQuery + " AND "; } else { firstEntry = false; }
+		 * 
+		 * xsamsQuery = xsamsQuery + getRangeQuery(
+		 * unitConversion(radTransFrequencyFrom, radTransFrequencyStdUnit,
+		 * radTransFrequencySelectedUnit, "FREQUENCY"),
+		 * unitConversion(radTransFrequencyTo, radTransFrequencyStdUnit,
+		 * radTransFrequencySelectedUnit, "FREQUENCY"), "RadTransFrequency"); }
+		 * 
+		 * if ((radTransEnergyFrom != null && radTransEnergyFrom.trim().length()
+		 * > 0) || (radTransEnergyTo != null && radTransEnergyTo.trim()
+		 * .length() > 0)) { if (firstEntry != true) { xsamsQuery = xsamsQuery +
+		 * " AND "; } else { firstEntry = false; } xsamsQuery = xsamsQuery +
+		 * getRangeQuery( unitConversion(radTransEnergyFrom,
+		 * radTransEnergyStdUnit, radTransEnergySelectedUnit, "ENERGY"),
+		 * unitConversion(radTransEnergyTo, radTransEnergyStdUnit,
+		 * radTransEnergySelectedUnit, "ENERGY"), "RadTransEnergy"); }
+		 * 
+		 * if ((radTransWavenumberFrom != null && radTransWavenumberFrom.trim()
+		 * .length() > 0) || (radTransWavenumberTo != null &&
+		 * radTransWavenumberTo.trim() .length() > 0)) { if (firstEntry != true)
+		 * { xsamsQuery = xsamsQuery + " AND "; } else { firstEntry = false; }
+		 * xsamsQuery = xsamsQuery + getRangeQuery(
+		 * unitConversion(radTransWavenumberFrom, radTransWavenumberStdUnit,
+		 * radTransWavenumberSelectedUnit, "WAVENUMBER"),
+		 * unitConversion(radTransWavenumberTo, radTransWavenumberStdUnit,
+		 * radTransWavenumberSelectedUnit, "WAVENUMBER"), "RadTransWavenumber");
+		 * }
+		 */
+		if (this.moleculeForm) {
+			/*if ((moleculeStateEnergyFrom != null && moleculeStateEnergyFrom
+					.trim().length() > 0)
+					|| (moleculeStateEnergyTo != null && moleculeStateEnergyTo
+							.trim().length() > 0))*/
+			if ((atomStateEnergyFrom != null && atomStateEnergyFrom.trim()
+					.length() > 0)
+					|| (atomStateEnergyTo != null && atomStateEnergyTo.trim()
+							.length() > 0)){
+				if (firstEntry != true) {
+					xsamsQuery = xsamsQuery + " AND ";
+				} else {
+					firstEntry = false;
+				}
+				xsamsQuery = xsamsQuery
+						+ getRangeQuery(
+								unitConversion(atomStateEnergyFrom,
+										atomStateEnergyStdUnit,
+										atomStateEnergySelectedUnit, "ENERGY"),
+								unitConversion(atomStateEnergyTo,
+										atomStateEnergyStdUnit,
+										atomStateEnergySelectedUnit, "ENERGY"),
+										"MoleculeStateEnergy");
 			}
-
-			xsamsQuery = xsamsQuery
-					+ getRangeQuery(
-							unitConversion(radTransFrequencyFrom,
-									radTransFrequencyStdUnit,
-									radTransFrequencySelectedUnit, "FREQUENCY"),
-							unitConversion(radTransFrequencyTo,
-									radTransFrequencyStdUnit,
-									radTransFrequencySelectedUnit, "FREQUENCY"),
-							"RadTransFrequency");
 		}
 
-		if ((radTransEnergyFrom != null && radTransEnergyFrom.trim().length() > 0)
-				|| (radTransEnergyTo != null && radTransEnergyTo.trim()
-						.length() > 0)) {
-			if (firstEntry != true) {
-				xsamsQuery = xsamsQuery + " AND ";
-			} else {
-				firstEntry = false;
+		if (this.atomForm) {
+			if ((atomStateEnergyFrom != null && atomStateEnergyFrom.trim()
+					.length() > 0)
+					|| (atomStateEnergyTo != null && atomStateEnergyTo.trim()
+							.length() > 0)) {
+				if (firstEntry != true) {
+					xsamsQuery = xsamsQuery + " AND ";
+				} else {
+					firstEntry = false;
+				}
+				xsamsQuery = xsamsQuery
+						+ getRangeQuery(
+								unitConversion(atomStateEnergyFrom,
+										atomStateEnergyStdUnit,
+										atomStateEnergySelectedUnit, "ENERGY"),
+								unitConversion(atomStateEnergyTo,
+										atomStateEnergyStdUnit,
+										atomStateEnergySelectedUnit, "ENERGY"),
+								"AtomStateEnergy");
 			}
-			xsamsQuery = xsamsQuery
-					+ getRangeQuery(
-							unitConversion(radTransEnergyFrom,
-									radTransEnergyStdUnit,
-									radTransEnergySelectedUnit, "ENERGY"),
-							unitConversion(radTransEnergyTo,
-									radTransEnergyStdUnit,
-									radTransEnergySelectedUnit, "ENERGY"),
-							"RadTransEnergy");
-		}
-
-		if ((radTransWavenumberFrom != null && radTransWavenumberFrom.trim()
-				.length() > 0)
-				|| (radTransWavenumberTo != null && radTransWavenumberTo.trim()
-						.length() > 0)) {
-			if (firstEntry != true) {
-				xsamsQuery = xsamsQuery + " AND ";
-			} else {
-				firstEntry = false;
-			}
-			xsamsQuery = xsamsQuery
-					+ getRangeQuery(
-							unitConversion(radTransWavenumberFrom,
-									radTransWavenumberStdUnit,
-									radTransWavenumberSelectedUnit,
-									"WAVENUMBER"),
-							unitConversion(radTransWavenumberTo,
-									radTransWavenumberStdUnit,
-									radTransWavenumberSelectedUnit,
-									"WAVENUMBER"), "RadTransWavenumber");
-		}
-*/
-		if ((moleculeStateEnergyFrom != null && moleculeStateEnergyFrom.trim()
-				.length() > 0)
-				|| (moleculeStateEnergyTo != null && moleculeStateEnergyTo
-						.trim().length() > 0)) {
-			if (firstEntry != true) {
-				xsamsQuery = xsamsQuery + " AND ";
-			} else {
-				firstEntry = false;
-			}
-			xsamsQuery = xsamsQuery
-					+ getRangeQuery(
-							unitConversion(moleculeStateEnergyFrom,
-									moleculeStateEnergyStdUnit,
-									moleculeStateEnergySelectedUnit, "ENERGY"),
-							unitConversion(moleculeStateEnergyTo,
-									moleculeStateEnergyStdUnit,
-									moleculeStateEnergySelectedUnit, "ENERGY"),
-							"MoleculeStateEnergy");
-		}
-
-		if ((atomStateEnergyFrom != null && atomStateEnergyFrom.trim().length() > 0)
-				|| (atomStateEnergyTo != null && atomStateEnergyTo.trim()
-						.length() > 0)) {
-			if (firstEntry != true) {
-				xsamsQuery = xsamsQuery + " AND ";
-			} else {
-				firstEntry = false;
-			}
-			xsamsQuery = xsamsQuery
-					+ getRangeQuery(
-							unitConversion(atomStateEnergyFrom,
-									atomStateEnergyStdUnit,
-									atomStateEnergySelectedUnit, "ENERGY"),
-							unitConversion(atomStateEnergyTo,
-									atomStateEnergyStdUnit,
-									atomStateEnergySelectedUnit, "ENERGY"),
-							"AtomStateEnergy");
 		}
 
 		if ((radTransProbabilityAFrom != null && radTransProbabilityAFrom
@@ -531,11 +513,39 @@ public class Transitions {
 		this.moleculeStateEnergySelectedUnit = moleculeStateEnergySelectedUnit;
 	}
 
+	public boolean isAtomForm() {
+		return atomForm;
+	}
+
+	public void setAtomForm(boolean atomForm) {
+		this.atomForm = atomForm;
+	}
+
+	public boolean isMoleculeForm() {
+		return moleculeForm;
+	}
+
+	public void setMoleculeForm(boolean moleculeForm) {
+		this.moleculeForm = moleculeForm;
+	}
+
 	private String getRangeQuery(String value1, String value2, String columnName) {
 
 		if ((value1 != null && value1.trim().length() > 0)
 				&& (value2 != null && value2.trim().length() > 0)) {
 			// return columnName + " BETWEEN " + value1 + " AND " + value2;
+
+			try {
+				if (Double.parseDouble(value1) < Double.parseDouble(value2)) {
+					return columnName + " >= " + value1 + " AND " + columnName
+							+ " <= " + value2;
+				} else {
+					return columnName + " >= " + value2 + " AND " + columnName
+							+ " <= " + value1;
+				}
+			} catch (Exception e) {
+
+			}
 
 			return columnName + " >= " + value1 + " AND " + columnName + " <= "
 					+ value2;
@@ -682,7 +692,7 @@ public class Transitions {
 
 			double frequencyInHertz = Double
 					.parseDouble(frequencyStringInHertz);
-			
+
 			String wavelength = "" + frequencyToWavelength(frequencyInHertz);
 			this.radTransWavelengthFrom = wavelength;
 
@@ -804,11 +814,9 @@ public class Transitions {
 	}
 
 	/*
-	public void wavelengthUnitChange() {
-		wavenumberConverterTo();
-		wavenumberConverterFrom();
-	}
-*/
+	 * public void wavelengthUnitChange() { wavenumberConverterTo();
+	 * wavenumberConverterFrom(); }
+	 */
 	public void frequencyUnitChange() {
 		frequncyConverterTo();
 		frequncyConverterFrom();

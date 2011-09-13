@@ -60,8 +60,7 @@
 								reRender="moleculeStoichiometricFormula, moleculeInchiKey, moleculeInchi"></a4j:support>
 								
 						<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('moleculeChemicalName', speciesMolecules.moleculeChemicalName, '')}" 
-								reRender="rightPanel"></a4j:support>
-								
+								reRender="rightPanel"></a4j:support>								
 					</h:inputText>
 					
 					<h:outputText value="Stoichiometric Formula:" />
@@ -70,6 +69,15 @@
 						value="#{speciesMolecules.moleculeStoichiometricFormula}" style=" width : 265px;" disabled="#{not speciesMolecules.moleculeOrdinaryStructuralFormulaBoolean}"
 						styleClass="#{not speciesMolecules.moleculeOrdinaryStructuralFormulaBoolean ? 'inputTextClass' : 'color:pink'}">
 						
+						<rich:suggestionbox for="moleculeStoichiometricFormula" var="result" suggestionAction="#{speciesMolecules.getStoichiometricFormulaQueryWildcard}" width="280" border="0">
+			                <h:column style=" width : 253px;">			
+			                	<h:outputText value="#{result.stoichiometricFormula}" style=" width : 253px;"/>			
+			                </h:column>
+			                <!-- -->
+			                <a4j:support event="onselect" action="#{speciesMolecules.getStoichiometricFormulaQuery}" 
+								reRender="moleculesDBQueryPanel"/>				                 
+	                	</rich:suggestionbox>
+	                	
 							<a4j:support event="onkeyup" action="#{selectedRestrictables.keyEventOnBlur('MoleculeStoichiometricFormula', speciesMolecules.moleculeStoichiometricFormula, '')}" 
 								reRender="rightPanel"></a4j:support>
 								

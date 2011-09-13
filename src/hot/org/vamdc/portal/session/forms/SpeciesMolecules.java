@@ -591,6 +591,21 @@ public class SpeciesMolecules {
 		}
 
 	}
+	
+	public List<MoleculeNames> getMoleculeNameQueryWildcard(Object suggest) {
+		String pref = (String) suggest;
+		List<MoleculeNames> moleculeNamesList = new MoleculeNamesHome()
+				.findByMolecNameWildcard(pref);
+		return moleculeNamesList;
+
+	}
+	
+	public List<Molecules> getStoichiometricFormulaQueryWildcard(Object suggest) {		
+		String pref = (String) suggest;
+		//System.out.println("getStoichiometricFormulaQueryWildcard: " + pref);
+		List<Molecules> moleculeNamesList = new MoleculesHome().findByStoichiometricFormulaWildcard(pref);
+		return moleculeNamesList;
+	}
 
 	public void getMoleculeNameQuery() {
 		System.out.println("getMoleculeNameQuery");
@@ -618,14 +633,6 @@ public class SpeciesMolecules {
 		} else {
 			// moleculeOrdinaryStructuralFormulaBoolean = true;
 		}
-	}
-
-	public List<MoleculeNames> getMoleculeNameQueryWildcard(Object suggest) {
-		String pref = (String) suggest;
-		List<MoleculeNames> moleculeNamesList = new MoleculeNamesHome()
-				.findByMolecNameWildcard(pref);
-		return moleculeNamesList;
-
 	}
 
 	public void getStoichiometricFormulaQuery() {
@@ -762,5 +769,33 @@ public class SpeciesMolecules {
 		selectedIsotopesFromCheckBox = new ArrayList<String>();
 		selectedIsotopesFromCheckBox2 = new ArrayList<String>();		
 		selectAllBoolean = true;
+	}
+	
+	private String getRangeQuery(String value1, String value2, String columnName) {
+
+		if ((value1 != null && value1.trim().length() > 0)
+				&& (value2 != null && value2.trim().length() > 0)) {
+			// return columnName + " BETWEEN " + value1 + " AND " + value2;
+			
+			try {
+				if (Double.parseDouble(value1) < Double.parseDouble(value2)) {
+					return columnName + " >= " + value1 + " AND " + columnName
+							+ " <= " + value2;
+				} else {
+					return columnName + " >= " + value2 + " AND " + columnName
+							+ " <= " + value1;
+				}
+			} catch (Exception e) {
+
+			}
+
+			return columnName + " >= " + value1 + " AND " + columnName + " <= "
+					+ value2;
+		} else if (value1 != null && value1.trim().length() > 0) {
+			return columnName + " >= " + value1;
+		} else if (value2 != null && value2.trim().length() > 0) {
+			return columnName + " <= " + value2;
+		}
+		return "";
 	}
 }

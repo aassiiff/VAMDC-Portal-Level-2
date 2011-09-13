@@ -115,6 +115,7 @@ public class XSAMSQueryGeneratorNew {
 
 	public void setAtomsForm(boolean atomForm) {
 		this.atomsForm = atomForm;
+		transitions.setAtomForm(atomForm);
 	}
 
 	public boolean isMoleculesForm() {
@@ -123,6 +124,7 @@ public class XSAMSQueryGeneratorNew {
 
 	public void setMoleculesForm(boolean moleculesForm) {
 		this.moleculesForm = moleculesForm;
+		transitions.setMoleculeForm(moleculesForm);
 	}
 
 	public boolean isTransitionsForm() {
@@ -249,21 +251,24 @@ public class XSAMSQueryGeneratorNew {
 		} 
 		
 		if (moleculesForm == true) {
-			if (atomsForm == true) {
+			if (atomsForm == true && (speciesAtoms.getQueryString().trim().length() > 0)) {
 				queryString = queryString + " AND ";
 			}
 			queryString = queryString + speciesMolecules.getQueryString();
 		}
 
 		if (transitionsForm == true) {
-			if (atomsForm == true || moleculesForm == true){
+			if (atomsForm == true && (speciesAtoms.getQueryString().trim().length() > 0)
+					|| moleculesForm == true && (speciesMolecules.getQueryString().trim().length() > 0)){
 				queryString = queryString + " AND ";
 			}
 			queryString = queryString + transitions.getQueryString();
 		}
 
 		if (collisionsForm == true) {
-			if (atomsForm == true || moleculesForm == true || transitionsForm == true) {
+			if (atomsForm == true && (speciesAtoms.getQueryString().trim().length() > 0)
+					|| moleculesForm == true && (speciesMolecules.getQueryString().trim().length() > 0)
+					|| transitionsForm == true && (transitions.getQueryString().trim().length() > 0)) {
 				queryString = queryString + " AND ";
 			}
 			queryString = queryString + collisions.getQueryString();

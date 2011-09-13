@@ -32,7 +32,7 @@ public class XSAMSQueryHeadRequestThread implements Callable<XSAMSQueryHeadRespo
 			//System.out.println("XSAMSQueryHeadRequestThread call(): " + u.toString());
 			HttpURLConnection http = (HttpURLConnection) u.openConnection();
             http.setRequestMethod("HEAD");
-            http.setReadTimeout(15 * 1000);
+            http.setReadTimeout(30 * 1000);
             //System.out.println("\n\n" + URLString);
             //System.out.println(((HttpURLConnection) http).getResponseCode());
             

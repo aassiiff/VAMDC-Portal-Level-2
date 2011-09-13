@@ -17,6 +17,7 @@ import org.hibernate.validator.Length;
     @NamedQuery(name = "Molecules.findAll", query = "SELECT m FROM Molecules m"),
     @NamedQuery(name = "Molecules.findById", query = "SELECT m FROM Molecules m WHERE m.id = :id"),
     @NamedQuery(name = "Molecules.findByStoichiometricFormula", query = "SELECT m FROM Molecules m WHERE m.stoichiometricFormula = :stoichiometricFormula"),
+    @NamedQuery(name = "Molecules.findByStoichiometricFormulaWildcard", query = "SELECT m FROM Molecules m WHERE m.stoichiometricFormula LIKE :stoichiometricFormula"),
     @NamedQuery(name = "Molecules.findByInChIKeyStem", query = "SELECT m FROM Molecules m WHERE m.inChIkeyStem = :inChIkeyStem"),
     @NamedQuery(name = "Molecules.findByMolecName", query = "SELECT m FROM Molecules m WHERE m.molecName = :molecName"),
     @NamedQuery(name = "Molecules.findByMolecNameHtml", query = "SELECT m FROM Molecules m WHERE m.molecNameHtml = :molecNameHtml")})

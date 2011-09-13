@@ -31,22 +31,53 @@ public class XSAMSQueryHeadResponse {
 		this.statusCode = statusCode;
 	}
 	public String getStatusMessage() {
+		System.out.println("getStatusMessage: " + statusMessage);
+		//if(statusMessage.equalsIgnoreCase("OK")){
+		/*if(statusMessage.equalsIgnoreCase("OK") || statusMessage.equalsIgnoreCase("No Content")){
+			statusMessage = "Online";
+		} else {
+			statusMessage = "Offline";
+		}*/
 		return statusMessage;
 	}
-	public void setStatusMessage(String statusMessage) {
-		this.statusMessage = statusMessage;
+	public void setStatusMessage(String statusMessageValue) {	
+		System.out.println("setStatusMessage: " + statusMessageValue);
+		/* */
+		if(statusMessageValue != null)
+			if(statusMessageValue.trim().equalsIgnoreCase("OK") || statusMessageValue.trim().equalsIgnoreCase("No Content")){
+				statusMessage = "Online";
+			} else {
+				statusMessage = "Offline";
+			}
+		this.statusMessage = statusMessageValue;
 	}
 	public String getCountRadiative() {
+		if(countRadiative.trim().length() == 0){
+			countRadiative = "0";
+		}
 		return countRadiative;
 	}
-	public void setCountRadiative(String countRadiative) {
-		this.countRadiative = countRadiative;
+	public void setCountRadiative(String countRadiativeValue) {
+		if(countRadiativeValue != null) {
+			if(countRadiativeValue.trim().length() > 0)
+				this.countRadiative = countRadiativeValue;
+		} else {
+			this.countRadiative = "0";
+		}
 	}
 	public String getCountStates() {
+		if(countStates.trim().length() == 0){
+			countStates = "0";
+		}
 		return countStates;
 	}
-	public void setCountStates(String countStates) {
-		this.countStates = countStates;
+	public void setCountStates(String countStatesValue) {
+		if(countStatesValue != null) {
+			if(countStatesValue.trim().length() > 0)		
+				this.countStates = countStatesValue;
+		} else {
+			this.countStates = "0";
+		}		
 	}
 	public String getNodeTitle() {
 		return nodeTitle;
@@ -55,40 +86,92 @@ public class XSAMSQueryHeadResponse {
 		this.nodeTitle = nodeTitle;
 	}
 	public String getCountSpecies() {
+		if(countSpecies.trim().length() == 0){
+			countSpecies = "0";
+		}
 		return countSpecies;
 	}
-	public void setCountSpecies(String countSpecies) {
-		this.countSpecies = countSpecies;
+	public void setCountSpecies(String countSpeciesValue) {
+		if(countSpeciesValue != null) {
+			if(countSpeciesValue.trim().length() > 0)
+				this.countSpecies = countSpeciesValue;
+		} else {
+			this.countSpecies = "0";
+		}
+		
 	}
 	public String getCountAtoms() {
+		if(countAtoms.trim().length() == 0){
+			countAtoms = "0";
+		}
 		return countAtoms;
 	}
-	public void setCountAtoms(String countAtoms) {
-		this.countAtoms = countAtoms;
+	public void setCountAtoms(String countAtomsValue) {
+		if(countAtomsValue != null)
+			if(countAtomsValue.trim().length() > 0){
+				this.countAtoms = countAtomsValue;
+			} else {
+				this.countAtoms = "0";
+			}
+		
 	}
 	public String getCountMolecules() {
+		if(countMolecules.trim().length() == 0){
+			countMolecules = "0";
+		}
 		return countMolecules;
 	}
-	public void setCountMolecules(String countMolecules) {
-		this.countMolecules = countMolecules;
+	public void setCountMolecules(String countMoleculesValue) {
+		if(countMoleculesValue != null) { 
+			if(countMoleculesValue.trim().length() > 0)		
+			this.countMolecules = countMoleculesValue;
+		} else {
+			this.countMolecules = "0";
+		}
+		
 	}
 	public String getCountSources() {
+		if(countSources.trim().length() == 0){
+			countSources = "0";
+		}
 		return countSources;
 	}
-	public void setCountSources(String countSources) {
-		this.countSources = countSources;
+	public void setCountSources(String countSourcesValue) {
+		if(countSourcesValue != null) { 
+			if(countSourcesValue.trim().length() > 0)		
+			this.countSources = countSourcesValue;
+		} else {
+			this.countSources = "0";
+		}
+		
 	}
 	public String getCountCollisions() {
+		if(countCollisions.trim().length() == 0){
+			countCollisions = "0";
+		}
 		return countCollisions;
 	}
-	public void setCountCollisions(String countCollisions) {
-		this.countCollisions = countCollisions;
+	public void setCountCollisions(String countCollisionsValue) {
+		if(countCollisionsValue != null) { 
+			if(countCollisionsValue.trim().length() > 0)
+			this.countCollisions = countCollisionsValue;
+		} else {
+			this.countCollisions = "0";
+		}		
 	}
 	public String getCountNonRadiative() {
+		if(countNonRadiative.trim().length() == 0){
+			countNonRadiative = "0";
+		}
 		return countNonRadiative;
 	}
-	public void setCountNonRadiative(String countNonRadiative) {
-		this.countNonRadiative = countNonRadiative;
+	public void setCountNonRadiative(String countNonRadiativeValue) {
+		if(countNonRadiativeValue != null){
+			if (countNonRadiativeValue.trim().length() > 0)
+			this.countNonRadiative = countNonRadiativeValue;
+		} else {
+			this.countNonRadiative = "0";
+		}
 	}
 	public boolean checkBoxDisabled(){
 		//System.out.println("statusCode: " +  statusCode);

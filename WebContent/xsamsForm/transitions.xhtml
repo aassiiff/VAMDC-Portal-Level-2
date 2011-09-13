@@ -38,7 +38,7 @@
 			<h:panelGrid columns="1" columnClasses="top, top">
 				<h:panelGrid columns="3" columnClasses="top, top">
 					<h:outputText value="RadTransWavelength:" style="font-weight:bold"/>
-					<rich:spacer width="5" />
+					<rich:spacer width="45" />
 					<h:panelGrid>
 						<h:panelGrid columns="2" style="float: right">
 							<h:outputText value="From" />
@@ -210,7 +210,7 @@
 					</h:panelGrid>
 
 
-					<h:outputText value="Atom State Energy:" style="font-weight:bold"/>
+					<h:outputText value="Initial State Energy:" style="font-weight:bold"/>
 					<rich:spacer />
 					<h:panelGrid>
 						<h:panelGrid columns="2" style="float: right">
@@ -226,47 +226,16 @@
 							<h:outputText value="To" />
 							<h:inputText value="#{transitions.atomStateEnergyTo}"
 								style=" width : 182px;">
+								<!-- 
 								<a4j:support event="onkeyup"
 									action="#{selectedRestrictables.keyEventOnBlur('atomStateEnergy', transitions.atomStateEnergyFrom, transitions.atomStateEnergyTo)}"
-									reRender="rightPanel"></a4j:support>
+									reRender="rightPanel"></a4j:support>  -->
 							</h:inputText>
 						</h:panelGrid>
 						<h:panelGrid columns="2" style="float: right">
 							<h:outputText value="Units" />
 							<h:selectOneMenu disabled="#{not transitions.editable}"
 								value="#{transitions.atomStateEnergySelectedUnit}">
-								<f:selectItem itemValue="eV" itemLabel="eV" />
-								<f:selectItem itemValue="J" itemLabel="J" />
-								<f:selectItem itemValue="erg" itemLabel="erg" />
-							</h:selectOneMenu>
-						</h:panelGrid>
-					</h:panelGrid>
-
-					<h:outputText value="Molecule State Energy:" style="font-weight:bold"/>
-					<rich:spacer />
-					<h:panelGrid>
-						<h:panelGrid columns="2" style="float: right">
-							<h:outputText value="From" />
-							<h:inputText value="#{transitions.moleculeStateEnergyFrom}"
-								style=" width : 182px;">
-								<a4j:support event="onkeyup"
-									action="#{selectedRestrictables.keyEventOnBlur('moleculeStateEnergy', transitions.moleculeStateEnergyFrom, transitions.moleculeStateEnergyTo)}"
-									reRender="rightPanel"></a4j:support>
-							</h:inputText>
-						</h:panelGrid>
-						<h:panelGrid columns="2" style="float: right">
-							<h:outputText value="To" />
-							<h:inputText value="#{transitions.moleculeStateEnergyTo}"
-								style=" width : 182px;">
-								<a4j:support event="onkeyup"
-									action="#{selectedRestrictables.keyEventOnBlur('moleculeStateEnergy', transitions.moleculeStateEnergyFrom, transitions.moleculeStateEnergyTo)}"
-									reRender="rightPanel"></a4j:support>
-							</h:inputText>
-						</h:panelGrid>
-						<h:panelGrid columns="2" style="float: right">
-							<h:outputText value="Units" />
-							<h:selectOneMenu disabled="#{not transitions.editable}"
-								value="#{transitions.moleculeStateEnergySelectedUnit}">
 								<f:selectItem itemValue="eV" itemLabel="eV" />
 								<f:selectItem itemValue="J" itemLabel="J" />
 								<f:selectItem itemValue="erg" itemLabel="erg" />
@@ -301,7 +270,7 @@
 						</h:panelGrid>
 					</h:panelGrid>
 				</h:panelGrid>
-
+<!--  
 				<h:panelGrid columns="4" columnClasses="top, top">
 					<h:outputText value="RadTransBroadeningDoppler:" style="font-weight:bold"/>
 					<rich:spacer />
@@ -335,7 +304,7 @@
 						disabled="#{not transitions.editable}" />
 
 				</h:panelGrid>
-
+-->
 			</h:panelGrid>
 
 		</rich:panel>
