@@ -90,7 +90,7 @@
                 -->
 								<s:link
 									rendered="#{categoryB.queryStatus and categoryB.queryType == 'XSAMS'}"
-									onclick="window.open('#{registryBrowser.staticApplicationURL}/html/#{categoryB.queryID}.html','htmlwindow','scrollbars=yes, resizable=yes,toolbar=no, width=1200,height=800')"
+									onclick="window.open('#{registryBrowser.staticApplicationURL}/state-list?url=/opt/queryResults/server/default/deploy/vamdcstatic.war/xsams/#{categoryB.queryID}.xml','htmlwindow','scrollbars=yes, resizable=yes,toolbar=yes, width=1200,height=800')"
 									disabled="true">
 									<h:outputText value="View" />
 								</s:link>
@@ -99,7 +99,7 @@
 							<h:column rendered="#{categoryB.queryStatus}">
 								<s:link
 									rendered="#{categoryB.queryStatus and categoryB.queryType == 'XSAMS'}"
-									onclick="window.open('#{registryBrowser.staticApplicationURL}/xsams/#{categoryB.queryID}.xml','xsamswindow','scrollbars=yes, resizable=yes,toolbar=no, width=1200,height=800')">
+									onclick="window.open('#{categoryB.resoourceURL}#{categoryB.encodedQuery}','xsamswindow','scrollbars=yes, resizable=yes,toolbar=no, width=1200,height=800')">
 									<h:outputText value="View" />
 								</s:link>
 							</h:column>

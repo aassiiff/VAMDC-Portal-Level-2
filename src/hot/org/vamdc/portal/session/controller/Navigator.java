@@ -293,20 +293,20 @@ public class Navigator {
 		xsamsQueryNew.toggleEditable();
 		this.stage1Display = false;
 		selectedRestrictables.resetSelectedRestrictablesList();
-		//mainOptionPanel = "/xsamsForm/empty.xhtml";
-		//formPanel1 = "/submittedQueries.xhtml";
-		formPanel1 = "/xsamsForm/empty.xhtml";
+		mainOptionPanel = "/xsamsForm/empty.xhtml";
+		//mainOptionPanel = "/xsamsForm/XSAMSMainOption.xhtml";
+		formPanel1 = "/xsamsForm/submittedXSAMSQueries.xhtml";
 		formPanel1A = "/xsamsForm/emptyWithWidth.xhtml";
 		formPanel2 = "/xsamsForm/emptyWithWidth.xhtml";
 		formPanel3 = "/xsamsForm/emptyWithWidth.xhtml";
 		formPanel4 = "/xsamsForm/emptyWithWidth.xhtml";
-		rightPanel = "/xsamsForm/restrictableTable.xhtml";
+		rightPanel = "/xsamsForm/empty.xhtml";
 		formButtonsPanel = "/xsamsForm/emptyWithWidth.xhtml";
 		try {
 			//Thread.sleep(100);
 			new Thread() {
 				public void run() {
-					resetQueryBuilder();
+					//resetQueryBuilder();
 				}
 			};
 		} catch (Exception e) {
@@ -336,6 +336,23 @@ public class Navigator {
 		selectedRestrictables.resetSelectedRestrictablesList();
 	}
 
+	public void defaultQueryBuilder() {
+		log.info("enableQueryBuilder called");
+		// xsamsQueryNew.toggleEditable();
+		this.stage1Display = false;
+		xsamsQueryNew.enableEditable();
+		// xsamsQueryNew.setSpeciesForm("---");
+		// xsamsQueryNew.setWavelenthForm("---");
+		mainOptionPanel = "/xsamsForm/XSAMSMainOption.xhtml";
+		formPanel1 = "/xsamsForm/empty.xhtml";
+		formPanel1A = "/xsamsForm/empty.xhtml";
+		formPanel2 = "/xsamsForm/empty.xhtml";
+		formPanel3 = "/xsamsForm/empty.xhtml";
+		formPanel4 = "/xsamsForm/empty.xhtml";
+		rightPanel = "/xsamsForm/restrictableTable.xhtml";
+		formButtonsPanel = "/xsamsForm/emptyWithWidth.xhtml";
+	}
+	
 	public void resetQueryBuilder() {
 		log.info("enableQueryBuilder called");
 		// xsamsQueryNew.toggleEditable();
