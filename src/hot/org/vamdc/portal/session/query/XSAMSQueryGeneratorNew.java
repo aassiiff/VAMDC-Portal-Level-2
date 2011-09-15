@@ -252,7 +252,7 @@ public class XSAMSQueryGeneratorNew {
 		
 		if (moleculesForm == true) {
 			if (atomsForm == true && (speciesAtoms.getQueryString().trim().length() > 0)) {
-				queryString = queryString + " AND ";
+				queryString = queryString + " OR ";
 			}
 			queryString = queryString + speciesMolecules.getQueryString();
 		}
@@ -275,7 +275,8 @@ public class XSAMSQueryGeneratorNew {
 		}
 		
 		//System.out.println("Query String :" + queryString + " " + queryString.trim().contains("==") + " " + queryString.trim().contains(">"));
-		if(queryString.trim().contains("=") || queryString.trim().contains(">=") || queryString.trim().contains("<=")){
+		if(queryString.trim().contains("=") || queryString.trim().contains(">=") || 
+				queryString.trim().contains("<=") || queryString.trim().contains("IN")){
 			submitHeadRequest();
 			return true;
 		} else {
@@ -289,7 +290,7 @@ public class XSAMSQueryGeneratorNew {
 		submitHeadRequest();
 	}
 
-	private void submitHeadRequest() {
+	private boolean submitHeadRequest() {
 
 		this.query = new QueryString("REQUEST", "doQuery");
 		this.query.add("LANG", "VSS1");
@@ -329,7 +330,12 @@ public class XSAMSQueryGeneratorNew {
 						extendedRegistryList.get(i).getResource().getTitle(),
 						extendedRegistryList.get(i).getXsamURL(), query.toString())));
 				startTime = new Date();
-			}		
+			} 
+			/*
+			if (futures.size() == 0){
+				return false;
+			}*/
+			
 		}
 
 		pollEnabled = true;
@@ -384,6 +390,7 @@ public class XSAMSQueryGeneratorNew {
 				}
 			}
 		}.start();
+		return true;
 	}
 
 	public List<XSAMSQueryHeadResponse> getHeadResponseList() {

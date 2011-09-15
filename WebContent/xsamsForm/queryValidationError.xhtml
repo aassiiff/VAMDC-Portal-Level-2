@@ -6,13 +6,11 @@
 	xmlns:s="http://jboss.com/products/seam/taglib"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
-	<style>     
-        
+	<style>            
 		.OutputTextClass {
 			color:red;
 			font-size:16px
-		} 
-		
+		} 		
 		.CommandLinkClass {
 			color:blue;
 			font-size:14px
@@ -20,6 +18,8 @@
     </style>
 	
 	<h:outputText value="'#{xsamsQueryNew.queryString}' is not valid VAMDC Query." styleClass="OutputTextClass"/>
+	<br/>
+	<h:outputText value="'OR' is not supported by any of the VAMDC Data Node." styleClass="OutputTextClass"/>
 	<br/>
 	<h:outputText value="Please, modify the form with appropriate values." styleClass="OutputTextClass"/>
 	<br></br>

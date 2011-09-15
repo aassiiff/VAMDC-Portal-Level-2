@@ -82,26 +82,34 @@
 									<h:outputText value="View"
 										rendered="#{categoryB.queryStatus and categoryB.queryType == 'TAP'}" />
 									<f:param name="queryIndex" value="#{categoryB.indexInList}" />
-								</s:link>
-				<!--                  
-                <s:link target="new" rendered="#{categoryB.queryStatus and categoryB.queryType == 'xsams'}">
-                	<a href="http://localhost:9090/?htmlFile=#{categoryB.queryID}.html">View</a>
-                </s:link>
-                -->
+								</s:link>				
 								<s:link
 									rendered="#{categoryB.queryStatus and categoryB.queryType == 'XSAMS'}"
 									onclick="window.open('#{registryBrowser.staticApplicationURL}/state-list?url=/opt/queryResults/server/default/deploy/vamdcstatic.war/xsams/#{categoryB.queryID}.xml','htmlwindow','scrollbars=yes, resizable=yes,toolbar=yes, width=1200,height=800')"
-									disabled="true">
-									<h:outputText value="View" />
+									disabled="false">
+									<h:outputText value="View HTML" />
 								</s:link>
+								<br/>
+								<br/>
+								<br/>
+								<s:link
+									rendered="false and #{categoryB.queryStatus and categoryB.queryType == 'XSAMS'}"
+									onclick="window.open('#{registryBrowser.staticApplicationURL}/index.html?fileName=xsams/#{categoryB.queryID}.xml','htmlwindow','scrollbars=yes, resizable=yes,toolbar=yes, width=1200,height=800')"
+									disabled="false">
+									<h:outputText value="Test" />
+								</s:link>
+								<h:graphicImage id="loadingImage11" value="/img/waitingIcon.gif" width="40%"
+								rendered="#{not categoryB.queryStatus}" />
 							</h:column>
 
-							<h:column rendered="#{categoryB.queryStatus}">
+							<h:column>
 								<s:link
 									rendered="#{categoryB.queryStatus and categoryB.queryType == 'XSAMS'}"
 									onclick="window.open('#{categoryB.resoourceURL}#{categoryB.encodedQuery}','xsamswindow','scrollbars=yes, resizable=yes,toolbar=no, width=1200,height=800')">
-									<h:outputText value="View" />
+									<h:outputText value="View XSAMS" />
 								</s:link>
+								<h:graphicImage id="loadingImage12" value="/img/waitingIcon.gif" width="40%"
+								rendered="#{not categoryB.queryStatus}" />
 							</h:column>
 						</rich:dataTable>
 					</h:column>

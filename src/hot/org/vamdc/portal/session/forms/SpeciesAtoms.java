@@ -132,7 +132,8 @@ public class SpeciesAtoms {
 		boolean firstEntry = true;
 
 		if (atomSymbol != null && atomSymbol.trim().length() > 0) {
-			xsamsQuery = xsamsQuery + " AtomSymbol = '" + atomSymbol + "'";
+			xsamsQuery = xsamsQuery + " AtomSymbol " + parseAtomSymbol()
+					+ "";
 			firstEntry = false;
 		}
 
@@ -225,6 +226,32 @@ public class SpeciesAtoms {
 			return columnName + " <= " + value2;
 		}
 		return "";
+	}
+
+	private String parseAtomSymbol() {
+		String collectiveString = "";
+
+		String[] temp;
+
+		/* delimiter */
+		String delimiter = " ";
+		/* given string will be split by the argument delimiter provided. */
+		temp = atomSymbol.trim().split(delimiter);
+
+		if (temp.length == 1) {
+			collectiveString = "= " + temp[0];
+		} else {
+			collectiveString = "IN (";
+			for (int i = 0; i < temp.length; i++) {
+				if (i == (temp.length - 1)) {
+					collectiveString = collectiveString + "'" + temp[i] + "'";
+				} else {
+					collectiveString = collectiveString + "'" + temp[i] + "',";
+				}
+			}
+			collectiveString = collectiveString + ")";
+		}
+		return collectiveString;
 	}
 
 }
